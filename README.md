@@ -1,12 +1,12 @@
 # nithin.me
 
-Single-page portfolio. Server-rendered, no client JavaScript, no animation.
+Single-page portfolio. Server-rendered, no client JavaScript, no images.
+Light by default, dark with the OS setting.
 
 ## Stack
 
-Next.js 16 · React 19 · TypeScript 6 · Tailwind CSS 4 · pnpm
-
-Fonts are self-hosted in `app/fonts` (Archivo for headings, Source Serif 4 for text; both OFL).
+Next.js 16, React 19, TypeScript 6, Tailwind CSS 4, pnpm.
+Font: Schibsted Grotesk, self-hosted in `app/fonts` (OFL).
 
 ## Run
 
@@ -21,16 +21,15 @@ pnpm lint
 
 | Path | What |
 | --- | --- |
-| `app/page.tsx` | All page copy and structure |
-| `content/site.ts` | Email, links, work index, tools list |
-| `components/Diagrams.tsx` | The two diagrams (plain HTML and CSS, so they reflow on phones) |
-| `app/globals.css` | Design tokens and all custom styles |
+| `content/site.ts` | Email, links, project text, tools list. Edit copy here. |
+| `app/page.tsx` | Page structure |
+| `components/Diagrams.tsx` | The two small text diagrams |
+| `app/globals.css` | Colours and all custom styles |
 | `app/opengraph-image.tsx` | Link-preview PNG, generated at build time |
 | `public/nithin-public-resume.pdf` | Resume linked from the page |
 
-## Design rules
+## Rules for edits
 
-- One palette, no accent colour. Emphasis comes from weight, size and inversion.
-- Text is never smaller than 15px. Body text is 17px on phones and 19px on larger screens.
-- Wide screenshots scroll sideways on phones instead of shrinking.
 - Every claim on the page comes from the resume. Do not add numbers that are not in it.
+- Project descriptions stay short: one line in the index, a few terse facts below.
+- No screenshots, no education section, email stays normal size.

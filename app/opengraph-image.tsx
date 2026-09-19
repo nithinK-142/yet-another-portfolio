@@ -8,8 +8,8 @@ export const contentType = "image/png";
 
 export default async function OpengraphImage() {
   const [bold, regular] = await Promise.all([
-    readFile(join(process.cwd(), "assets/og/archivo-700.woff")),
-    readFile(join(process.cwd(), "assets/og/archivo-400.woff")),
+    readFile(join(process.cwd(), "assets/og/schibsted-800.woff")),
+    readFile(join(process.cwd(), "assets/og/schibsted-400.woff")),
   ]);
 
   return new ImageResponse(
@@ -21,25 +21,25 @@ export default async function OpengraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#15181d",
-          color: "#e9ebef",
-          padding: "72px 80px",
-          fontFamily: "Archivo",
+          background: "#ffffff",
+          color: "#0c0c0c",
+          padding: "64px 72px",
+          fontFamily: "Schibsted",
         }}
       >
-        <div style={{ fontSize: 34, fontWeight: 700 }}>Nithin K</div>
+        <div style={{ fontSize: 34, fontWeight: 800, letterSpacing: "-0.02em" }}>Nithin K</div>
         <div
           style={{
-            fontSize: 112,
-            fontWeight: 700,
-            lineHeight: 1.0,
-            letterSpacing: "-0.03em",
-            maxWidth: 980,
+            fontSize: 118,
+            fontWeight: 800,
+            lineHeight: 0.98,
+            letterSpacing: "-0.055em",
+            maxWidth: 1020,
           }}
         >
           I build the backend that has to keep working.
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 30, color: "#b0b7c2", fontWeight: 400 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 30, color: "#66686b", fontWeight: 400 }}>
           <span>Backend-leaning full-stack developer, Bangalore</span>
           <span>nithin.me</span>
         </div>
@@ -48,8 +48,8 @@ export default async function OpengraphImage() {
     {
       ...size,
       fonts: [
-        { name: "Archivo", data: bold, weight: 700, style: "normal" },
-        { name: "Archivo", data: regular, weight: 400, style: "normal" },
+        { name: "Schibsted", data: bold, weight: 800, style: "normal" },
+        { name: "Schibsted", data: regular, weight: 400, style: "normal" },
       ],
     },
   );

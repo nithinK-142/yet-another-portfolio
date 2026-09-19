@@ -10,26 +10,55 @@ export const site = {
     "Backend-leaning full-stack developer in Bangalore. Payments, webhooks and push notification systems in production. Open to roles and relocation.",
 };
 
-export const workIndex = [
+export const projects = [
   {
     id: "dealsdray",
     name: "Dealsdray",
-    line: "B2B e-commerce platform. Taken from unfinished to production: 30K+ daily users, 2K+ orders a month.",
+    short: "B2B e-commerce. Unfinished to production: 30K+ daily users.",
+    kind: "B2B e-commerce platform",
+    stack: "React, Express, MongoDB, Flutter",
+    facts: [
+      "Taken from unfinished to production",
+      "30K+ daily users, 2K+ orders a month",
+      "Razorpay, PayTM, Zoop and Shiprocket, with webhooks",
+      "70K+ legacy users and their orders migrated",
+      "Monolith split into four services",
+    ],
   },
   {
     id: "notification-console",
     name: "Notification Console",
-    line: "Push notification system. Campaigns that took 15 minutes now finish in under one.",
+    short: "Push notifications. 15 minutes to under one.",
+    kind: "Push notification delivery system",
+    stack: "React, Express, MongoDB, Go",
+    facts: [
+      "Campaign runs cut from 15 minutes to under one",
+      "Priority order, concurrent batches, crash recovery",
+      "80K+ device tokens, 10K+ campaigns",
+    ],
   },
   {
     id: "rekrafted",
     name: "Rekrafted",
-    line: "Refurbished-device marketplace. Grade-based listings lifted orders 15%.",
+    short: "Refurbished marketplace. Grading lifted orders 15%.",
+    kind: "Refurbished-device marketplace",
+    stack: "Next.js, Express, MongoDB",
+    facts: [
+      "Grade-based listings on 70% of inventory: orders up 15%",
+      "10 to 15GB of media moved to ImageKit",
+    ],
+    link: { href: "https://rekrafted.in/", label: "rekrafted.in" },
   },
   {
     id: "prexo",
     name: "Prexo",
-    line: "Warehouse processing system. 30% more inventory recovered, and cron failures down from 50% of runs to zero.",
+    short: "Warehouse system. Cron failures from 50% of runs to zero.",
+    kind: "Warehouse processing system",
+    stack: "React, Express, MongoDB",
+    facts: [
+      "30% more inventory recovered",
+      "Cron failures cut from 50% of runs to 0%",
+    ],
   },
 ];
 
@@ -37,9 +66,8 @@ export const tools = [
   { group: "Languages", items: "JavaScript, TypeScript, Go" },
   { group: "Frontend", items: "React, Next.js, Tailwind CSS" },
   { group: "Backend", items: "Node.js, Express, REST APIs, webhooks, microservices, RabbitMQ" },
-  { group: "Databases", items: "MongoDB, PostgreSQL, Redis" },
+  { group: "Data", items: "MongoDB, PostgreSQL, Redis" },
   { group: "Infrastructure", items: "Linux, Windows Server, AWS, Docker, PM2, IIS, Plesk" },
   { group: "Integrations", items: "Razorpay, PayTM, Shiprocket, Zoop, Firebase Cloud Messaging" },
   { group: "Observability", items: "OpenTelemetry, Grafana, Prometheus, Sentry, Stackify" },
-  { group: "Everyday", items: "Git, GitHub, Postman" },
 ];

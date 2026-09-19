@@ -3,19 +3,11 @@ import localFont from "next/font/local";
 import { site } from "@/content/site";
 import "./globals.css";
 
-const archivo = localFont({
-  src: "./fonts/archivo-wdth.woff2",
-  variable: "--font-archivo",
+const schibsted = localFont({
+  src: "./fonts/schibsted-grotesk-wght.woff2",
+  variable: "--font-schibsted",
   display: "swap",
-  weight: "100 900",
-  declarations: [{ prop: "font-stretch", value: "62% 125%" }],
-});
-
-const sourceSerif = localFont({
-  src: "./fonts/source-serif-4-wght.woff2",
-  variable: "--font-source-serif",
-  display: "swap",
-  weight: "200 900",
+  weight: "400 900",
 });
 
 export const metadata: Metadata = {
@@ -30,17 +22,16 @@ export const metadata: Metadata = {
     siteName: site.name,
     type: "website",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: site.title,
-    description: site.description,
-  },
+  twitter: { card: "summary_large_image", title: site.title, description: site.description },
   robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
-  colorScheme: "dark",
-  themeColor: "#15181d",
+  colorScheme: "light dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0c0c0c" },
+  ],
 };
 
 const personJsonLd = {
@@ -57,12 +48,9 @@ const personJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${archivo.variable} ${sourceSerif.variable}`}>
+    <html lang="en" className={schibsted.variable}>
       <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
         {children}
       </body>
     </html>

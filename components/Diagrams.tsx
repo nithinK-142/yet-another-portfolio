@@ -1,59 +1,33 @@
-import { Figure } from "@/components/Figure";
+/** Small, text-only diagrams (no images). Plain HTML so they reflow on phones. */
 
-/** One application split into four independently released services. */
 export function MonolithSplit() {
   return (
-    <Figure caption="One application became four services. Each one is released and scaled on its own.">
-      <div className="split">
-        <div className="split-row">
-          <p className="split-label">Before</p>
-          <ul className="nodes nodes-1">
-            <li>
-              Monolith
-              <small>One application, one release</small>
-            </li>
-          </ul>
-        </div>
-        <div className="split-row split-row-after">
-          <p className="split-label">After</p>
-          <ul className="nodes nodes-4">
-            <li>API</li>
-            <li>Cron jobs</li>
-            <li>Notifications</li>
-            <li>Payments</li>
-          </ul>
-        </div>
+    <figure className="fig">
+      <div className="flow row4" role="img" aria-label="Monolith split into API, cron, notification and payment services">
+        <div>API</div>
+        <div>Cron</div>
+        <div>Notifications</div>
+        <div>Payments</div>
       </div>
-    </Figure>
+      <figcaption>Monolith to four services.</figcaption>
+    </figure>
   );
 }
 
-/** Campaign delivery: queued by priority, sent in concurrent batches. */
 export function CampaignPipeline() {
   return (
-    <Figure caption="How a campaign is delivered: queued by priority, sent in concurrent batches, and able to recover after a crash.">
-      <ol className="flow">
-        <li>
-          Campaign
-          <small>Created in the console</small>
-        </li>
-        <li>
-          Priority queue
-          <small>Highest priority first</small>
-        </li>
-        <li>
-          Concurrent batches
-          <span className="batches" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-          </span>
-        </li>
-        <li>
-          Devices
-          <small>Push delivered</small>
-        </li>
-      </ol>
-    </Figure>
+    <figure className="fig">
+      <div className="flow row4" role="img" aria-label="Campaign, priority queue, concurrent batches, devices">
+        <div>Campaign</div>
+        <div>
+          Priority queue<small>Highest first</small>
+        </div>
+        <div>
+          Concurrent batches<small>With crash recovery</small>
+        </div>
+        <div>Devices</div>
+      </div>
+      <figcaption>How a campaign is delivered.</figcaption>
+    </figure>
   );
 }
