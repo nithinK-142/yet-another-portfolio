@@ -1,13 +1,14 @@
-# nithin.me — portfolio v3
+# nithin.me
 
-A clean rebuild. Separate from the original portfolio codebase.
+Independent portfolio rebuild.
 
 ## Stack
 
-- Next.js 14 App Router
-- TypeScript
-- Tailwind CSS
-- Framer Motion
+- Next.js 16.3.5
+- React 19.3.0
+- TypeScript 7.0.2
+- Tailwind CSS 4.3.3
+- Motion 13.4.0
 
 ## Run
 
@@ -16,19 +17,14 @@ pnpm install
 pnpm dev
 ```
 
-## Notes
-
-- Existing portfolio remains untouched.
-- No phone number or address is exposed.
-- Only verified resume metrics are used.
-- Private projects are labeled private.
-
 ## Runtime
 
-- Node.js 24.21.0 LTS
+- Node.js 24.21.0
 - pnpm 12.4.2
-- Next.js 16.3.5
-- React 19.3.0
-- Tailwind CSS 4.3.3
-- Motion 13.4.0
-- TypeScript 7.0.2
+
+## Notes
+
+- Separate from the original portfolio codebase.
+- No phone number or address is exposed.
+- Project claims and metrics come from the supplied resume.
+- Private products are presented as private.

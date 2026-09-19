@@ -7,91 +7,141 @@ import { useState } from "react";
 type Project = {
   id: string;
   name: string;
-  role: string;
+  type: string;
   outcome: string;
+  summary: string;
+  detail: string;
   stack: string;
-  details: string[];
   link?: string;
   linkLabel?: string;
+  image?: string;
+  visual: "notifications" | "commerce" | "marketplace" | "warehouse";
 };
 
 const projects: Project[] = [
   {
     id: "01",
     name: "Notification Console",
-    role: "Push delivery system",
-    outcome: "15 min → under 1 min",
+    type: "Push delivery system",
+    outcome: "15m → <1m",
+    summary: "Made large notification campaigns run in under a minute.",
+    detail: "80K+ device tokens. 10K+ campaigns. Priority-ordered concurrent batching with crash recovery.",
     stack: "React · Express · MongoDB · Go",
-    details: [
-      "Delivered priority-ordered concurrent batches across 80K+ device tokens and 10K+ campaigns.",
-      "Designed crash recovery around campaign execution instead of leaving failed runs as manual work.",
-    ],
+    visual: "notifications",
   },
   {
     id: "02",
     name: "Dealsdray",
-    role: "B2B commerce platform",
-    outcome: "30K+ daily active users",
+    type: "B2B commerce platform",
+    outcome: "30K+ DAU",
+    summary: "Took major parts of a B2B commerce platform through production.",
+    detail: "Built the migration pipeline for 70K+ legacy users and orders, integrated payments and shipments, and split the monolith into separately releasable services.",
     stack: "React · Express · MongoDB · Flutter",
-    details: [
-      "Built and stabilized major parts of the platform through production, including payment and shipment integrations.",
-      "Moved the monolith into API, cron, notification, and payment services for independent releases and scaling.",
-    ],
+    image: "/projects/dealsdray-dashboard.webp",
+    visual: "commerce",
   },
   {
     id: "03",
     name: "RekrafteD",
-    role: "Refurbished-device marketplace",
+    type: "Refurbished-device marketplace",
     outcome: "+15% orders",
+    summary: "Added grade-based listings and pricing across 70% of inventory.",
+    detail: "Moved 10–15GB of media from the API server to ImageKit. Public product at rekrafted.in.",
     stack: "Next.js · Express · MongoDB",
-    details: [
-      "Built grade-specific listings and pricing covering 70% of inventory.",
-      "Moved 10–15GB of media off the API server into ImageKit to reduce disk pressure.",
-    ],
     link: "https://rekrafted.in/",
-    linkLabel: "Live site",
+    linkLabel: "Open product",
+    image: "/projects/rekrafted-home.webp",
+    visual: "marketplace",
   },
   {
     id: "04",
     name: "Prexo",
-    role: "Warehouse processing system",
-    outcome: "50% → 0% cron failures",
+    type: "Warehouse processing system",
+    outcome: "50% → 0%",
+    summary: "Recovered more inventory and stopped recurring Windows cron failures.",
+    detail: "Recovery utility delivered 30% more inventory recovery. Cron workload moved to an NSSM-managed service.",
     stack: "React · Express · MongoDB",
-    details: [
-      "Built an inventory recovery utility that reintegrated unsellable units as fresh imports.",
-      "Replaced recurring Windows Server cron failures with an NSSM-managed service.",
-    ],
+    visual: "warehouse",
   },
 ];
 
+function Schematic({ kind }: { kind: Project["visual"] }) {
+  if (kind === "notifications") {
+    return (
+      <div className="schematic notification-schematic" aria-hidden="true">
+        <div className="schematic-head"><span>QUEUE</span><span>LIVE</span></div>
+        {["A1", "A2", "A3", "A4"].map((item, i) => (
+          <div key={item} className="batch-row">
+            <b>{item}</b>
+            <span><i style={{ width: `${58 + i * 10}%` }} /></span>
+            <em>{i < 3 ? "sent" : "queue"}</em>
+          </div>
+        ))}
+        <div className="schematic-foot">concurrent batches</div>
+      </div>
+    );
+  }
+
+  if (kind === "commerce") {
+    return (
+      <div className="schematic commerce-schematic" aria-hidden="true">
+        <span className="node node-root">traffic</span>
+        <div className="node-grid">
+          <span className="node">API</span>
+          <span className="node">PAY</span>
+          <span className="node">CRON</span>
+          <span className="node">NOTIFY</span>
+        </div>
+        <small>independent workloads</small>
+      </div>
+    );
+  }
+
+  if (kind === "marketplace") {
+    return (
+      <div className="schematic marketplace-schematic" aria-hidden="true">
+        <div className="mini-card"><small>GRADE A</small><strong>Device</strong><span>price</span></div>
+        <div className="mini-card middle"><small>GRADE B</small><strong>Device</strong><span>price</span></div>
+        <div className="mini-card back"><small>GRADE C</small><strong>Device</strong><span>price</span></div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="schematic warehouse-schematic" aria-hidden="true">
+      <span className="flow-node active">scan</span>
+      <i />
+      <span className="flow-node">recover</span>
+      <i />
+      <span className="flow-node">import</span>
+      <small>service stable</small>
+    </div>
+  );
+}
+
 export function ProjectList() {
-  const [open, setOpen] = useState<string | null>(null);
+  const [open, setOpen] = useState("03");
   const reduce = useReducedMotion();
 
   return (
-    <div className="divide-y divide-[var(--line)] border-y border-[var(--line)]">
+    <div className="project-list">
       {projects.map((project) => {
         const isOpen = open === project.id;
         return (
-          <div key={project.id}>
+          <article key={project.id} className={`project-row ${isOpen ? "is-open" : ""}`}>
             <button
               type="button"
+              className="project-button"
               aria-expanded={isOpen}
-              onClick={() => setOpen(isOpen ? null : project.id)}
-              className="group grid w-full grid-cols-[40px_1fr_auto] gap-4 py-5 text-left md:grid-cols-[54px_minmax(260px,1.1fr)_minmax(180px,.8fr)_minmax(190px,.9fr)_22px] md:items-center md:gap-6 md:py-6"
+              onClick={() => setOpen(isOpen ? "" : project.id)}
             >
-              <span className="font-mono text-xs text-[var(--subtle)]">{project.id}</span>
-              <span>
-                <span className="block text-[15px] font-medium tracking-[-0.01em] text-[var(--text)] group-hover:text-[var(--accent)] md:text-[17px]">
-                  {project.name}
-                </span>
-                <span className="mt-1 block text-sm text-[var(--muted)] md:hidden">{project.role}</span>
+              <span className="project-id">{project.id}</span>
+              <span className="project-title">
+                <strong>{project.name}</strong>
+                <small>{project.type}</small>
               </span>
-              <span className="hidden text-sm text-[var(--muted)] md:block">{project.role}</span>
-              <span className="hidden font-mono text-[12px] text-[var(--text)] md:block">{project.outcome}</span>
-              <span className={`flex h-7 w-7 items-center justify-center rounded-full border border-[var(--line)] text-[var(--muted)] transition ${isOpen ? "rotate-45 bg-[var(--accent-soft)] text-[var(--accent)]" : "group-hover:border-white/20 group-hover:text-white"}`}>
-                <Plus size={15} />
-              </span>
+              <span className="project-result">{project.outcome}</span>
+              <span className="project-plus"><Plus size={15} /></span>
             </button>
 
             <AnimatePresence initial={false}>
@@ -100,40 +150,32 @@ export function ProjectList() {
                   initial={reduce ? false : { height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
                   exit={reduce ? undefined : { height: 0, opacity: 0 }}
-                  transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
-                  className="overflow-hidden"
+                  transition={{ duration: 0.26, ease: [0.22, 1, 0.36, 1] }}
+                  className="project-open"
                 >
-                  <div className="grid gap-6 pb-6 pl-[40px] md:grid-cols-[54px_minmax(260px,1.1fr)_minmax(180px,.8fr)_minmax(190px,.9fr)_22px] md:gap-6 md:pl-0">
-                    <span />
-                    <div>
-                      <p className="max-w-xl text-sm leading-6 text-[#b5b4ba]">{project.details[0]}</p>
-                      <p className="mt-3 max-w-xl text-sm leading-6 text-[#8e8d93]">{project.details[1]}</p>
+                  <div className="project-open-grid">
+                    <div className="project-open-copy">
+                      <p>{project.summary}</p>
+                      <p className="project-detail-text">{project.detail}</p>
+                      <div className="project-open-footer">
+                        <span>{project.stack}</span>
+                        {project.link ? (
+                          <a href={project.link} target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()}>
+                            {project.linkLabel} <ArrowUpRight size={13} />
+                          </a>
+                        ) : (
+                          <span>Private product</span>
+                        )}
+                      </div>
                     </div>
-                    <div className="text-xs text-[var(--muted)] md:col-span-2">
-                      <span className="block font-mono uppercase tracking-[0.14em] text-[var(--subtle)]">Stack</span>
-                      <span className="mt-2 block">{project.stack}</span>
-                    </div>
-                    <div className="flex items-end justify-start md:justify-end">
-                      {project.link ? (
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex items-center gap-2 text-xs font-medium text-[var(--text)] transition hover:text-[var(--accent)]"
-                          onClick={(event) => event.stopPropagation()}
-                        >
-                          {project.linkLabel}
-                          <ArrowUpRight size={14} />
-                        </a>
-                      ) : (
-                        <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--subtle)]">Private</span>
-                      )}
+                    <div className="project-media">
+                      {project.image ? <img src={project.image} alt={`${project.name} interface preview`} loading="lazy" /> : <Schematic kind={project.visual} />}
                     </div>
                   </div>
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
+          </article>
         );
       })}
     </div>
