@@ -1,0 +1,9 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0B0B0C"/>
+  <path d="M0 88H1200M0 176H1200M0 264H1200M0 352H1200M0 440H1200M0 528H1200" stroke="#1A1A1E"/>
+  <path d="M88 0V630M176 0V630M264 0V630M352 0V630M440 0V630M528 0V630M616 0V630M704 0V630M792 0V630M880 0V630M968 0V630M1056 0V630M1144 0V630" stroke="#16161A"/>
+  <circle cx="88" cy="88" r="8" fill="#A79CFF"/>
+  <text x="88" y="270" fill="#F0EEE9" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700">Nithin K</text>
+  <text x="88" y="340" fill="#A3A1A8" font-family="Arial, Helvetica, sans-serif" font-size="34">Backend-leaning Full-Stack Developer</text>
+  <text x="88" y="450" fill="#727177" font-family="Arial, Helvetica, sans-serif" font-size="24">Node.js · Go · PostgreSQL · MongoDB · Production systems</text>
+</svg>
