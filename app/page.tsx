@@ -1,4 +1,5 @@
 import { CommandPalette, type PaletteItem } from "@/components/CommandPalette";
+import { CopyEmailButton } from "@/components/CopyEmailButton";
 import { ExternalLink } from "@/components/Links";
 import { experience, projects, site, tools } from "@/content/site";
 
@@ -297,15 +298,7 @@ export default function Page() {
                       <span className="mono label">Primary mail</span>
                       <a href={`mailto:${site.email}`}>{site.email}</a>
                     </div>
-                    <button
-                      type="button"
-                      className="copy-button"
-                      onClick={() => {
-                        void navigator.clipboard.writeText(site.email);
-                      }}
-                    >
-                      Copy
-                    </button>
+                    <CopyEmailButton email={site.email} />
                   </div>
 
                   <div className="contact-links">
