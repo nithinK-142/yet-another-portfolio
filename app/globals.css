@@ -330,10 +330,7 @@ a {
   font-weight: 600;
 }
 
-section[id],
-article[id] {
-  scroll-margin-top: var(--bar);
-}
+/* Anchor targets start at the section rule. The document already reserves the sticky bar height. */
 
 /* ---------- Work ---------- */
 .proj {

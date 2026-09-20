@@ -71,9 +71,9 @@ export default function Page() {
       </div>
 
       <main id="main">
-        <section className="sec" id="experience" aria-labelledby="experience-h">
+        <section className="sec" aria-labelledby="experience-h">
           <div className="wrap">
-            <div className="blk pair">
+            <div className="blk pair" id="experience">
               <div>
                 <h2 id="experience-h">Experience</h2>
                 <h3 className="role">{experience.title}</h3>
@@ -95,9 +95,9 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="sec" id="stack" aria-labelledby="stack-h">
+        <section className="sec" aria-labelledby="stack-h">
           <div className="wrap">
-            <div className="blk pair">
+            <div className="blk pair" id="stack">
               <h2 id="stack-h">Stack</h2>
               <dl className="tl">
                 {tools.map((t) => (
@@ -111,9 +111,9 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="sec" id="work" aria-labelledby="work-h">
+        <section className="sec" aria-labelledby="work-h">
           <div className="wrap">
-            <div className="blk">
+            <div className="blk" id="work">
               <h2 id="work-h">Work</h2>
               {projects.map((p) => (
                 <article className="proj pair" id={p.id} key={p.id}>
@@ -146,9 +146,9 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="sec" id="contact" aria-labelledby="contact-h">
+        <section className="sec" aria-labelledby="contact-h">
           <div className="wrap">
-            <div className="blk pair">
+            <div className="blk pair" id="contact">
               <div>
                 <h2 id="contact-h">Contact</h2>
                 <p className="ask">Building or fixing a backend? Email me.</p>
