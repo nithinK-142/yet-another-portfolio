@@ -52,10 +52,33 @@ export const experience = {
   company: "C S Tech Infosolutions",
   place: "Bangalore",
   when: "September 2024 to May 2026",
-  points: [
-    "Four client products, brief to production",
-    "Worked with clients directly on requirements",
-    "Handled outages, deployments and data fixes",
+  summary:
+    "Turning business workflows into production software: application development, third-party integrations, releases, troubleshooting and system reliability.",
+  rows: [
+    {
+      label: "Scope",
+      text: "Four production applications spanning B2B commerce, warehouse operations, refurbished-device retail and notification delivery.",
+    },
+    {
+      label: "Ownership",
+      text: "Built, shipped and stabilized major parts of the Dealsdray platform, taking it from an unfinished state to production.",
+    },
+    {
+      label: "Clients",
+      text: "Worked directly with clients to understand their operational requirements and turn them into application changes.",
+    },
+    {
+      label: "Integrations",
+      text: "Connected payment and shipping providers, building webhook flows for payment confirmation and shipment status updates.",
+    },
+    {
+      label: "Architecture",
+      text: "Decomposed the Dealsdray monolith into API, cron, notification and payment microservices, so workloads scale and release independently.",
+    },
+    {
+      label: "Live systems",
+      text: "Handled production: server setup, outage resolution, urgent fixes, deployments, debugging and data corrections.",
+    },
   ],
 };
 

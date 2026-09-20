@@ -40,8 +40,8 @@ export default function Page() {
         </div>
       </div>
 
-      {/* Every screen fills the space below the bar, so nothing is cut off at the fold. */}
-      <div className="screen screen-hero">
+      {/* The hero fills the first screen below the bar, so nothing is cut off at the fold. */}
+      <div className="screen-hero">
         <div className="wrap">
           <header id="top" className="hero">
             <div className="hero-grid">
@@ -71,24 +71,34 @@ export default function Page() {
       </div>
 
       <main id="main">
-        <section className="screen" id="experience" aria-label="Experience and stack">
-          <div className="wrap profile">
-            <div className="blk">
-              <h2>Experience</h2>
-              <h3 className="role">{experience.title}</h3>
-              <p className="sub">{experience.company}</p>
-              <p className="small">
-                {experience.place}, {experience.when}
-              </p>
-              <ul className="facts">
-                {experience.points.map((f) => (
-                  <li key={f}>{f}</li>
+        <section className="sec" id="experience" aria-labelledby="experience-h">
+          <div className="wrap">
+            <div className="blk pair">
+              <div>
+                <h2 id="experience-h">Experience</h2>
+                <h3 className="role">{experience.title}</h3>
+                <p className="sub">{experience.company}</p>
+                <p className="small">
+                  {experience.place}, {experience.when}
+                </p>
+                <p className="summary">{experience.summary}</p>
+              </div>
+              <dl className="story">
+                {experience.rows.map((r) => (
+                  <div key={r.label}>
+                    <dt>{r.label}</dt>
+                    <dd>{r.text}</dd>
+                  </div>
                 ))}
-              </ul>
+              </dl>
             </div>
+          </div>
+        </section>
 
-            <div className="blk" id="stack">
-              <h2>Stack</h2>
+        <section className="sec" id="stack" aria-labelledby="stack-h">
+          <div className="wrap">
+            <div className="blk pair">
+              <h2 id="stack-h">Stack</h2>
               <dl className="tl">
                 {tools.map((t) => (
                   <div key={t.group}>
@@ -101,57 +111,54 @@ export default function Page() {
           </div>
         </section>
 
-        {projects.map((p, i) => (
-          <section className="screen" id={p.id} key={p.id} aria-labelledby={`${p.id}-h`}>
-            <div className="wrap profile">
-              <div className="blk">
-                <h2>
-                  Work <span className="count">{i + 1} of {projects.length}</span>
-                </h2>
-                <h3 className="pname" id={`${p.id}-h`}>
-                  {p.name}
-                </h3>
-                <p className="stack">{p.stack}</p>
-                {p.link && (
-                  <p className="stack">
-                    <ExternalLink href={p.link.href}>{p.link.label}</ExternalLink>
-                  </p>
-                )}
-              </div>
-              <div className="blk">
-                <dl className="story">
+        <section className="sec" id="work" aria-labelledby="work-h">
+          <div className="wrap">
+            <div className="blk">
+              <h2 id="work-h">Work</h2>
+              {projects.map((p) => (
+                <article className="proj pair" id={p.id} key={p.id}>
                   <div>
-                    <dt>Context</dt>
-                    <dd>{p.context}</dd>
+                    <h3 className="pname">{p.name}</h3>
+                    <p className="stack">{p.stack}</p>
+                    {p.link && (
+                      <p className="stack">
+                        <ExternalLink href={p.link.href}>{p.link.label}</ExternalLink>
+                      </p>
+                    )}
                   </div>
-                  <div>
-                    <dt>What I did</dt>
-                    <dd>{p.did}</dd>
-                  </div>
-                  <div>
-                    <dt>Result</dt>
-                    <dd>{p.result}</dd>
-                  </div>
-                </dl>
-              </div>
+                  <dl className="story">
+                    <div>
+                      <dt>Context</dt>
+                      <dd>{p.context}</dd>
+                    </div>
+                    <div>
+                      <dt>What I did</dt>
+                      <dd>{p.did}</dd>
+                    </div>
+                    <div>
+                      <dt>Result</dt>
+                      <dd>{p.result}</dd>
+                    </div>
+                  </dl>
+                </article>
+              ))}
             </div>
-          </section>
-        ))}
+          </div>
+        </section>
 
-        <section className="screen screen-last" id="contact" aria-labelledby="contact-h">
-          <div className="wrap profile">
-            <div className="blk">
-              <h2 id="contact-h">Contact</h2>
-              <p className="ask">Building or fixing a backend? Email me.</p>
-              <p className="ask-sub">Hiring for a backend or full-stack role? Same address.</p>
-              <p>
-                <a className="plain-link" href={`mailto:${site.email}`}>
-                  {site.email}
-                </a>
-              </p>
-            </div>
-            <div className="blk">
-              <h2>Elsewhere</h2>
+        <section className="sec" id="contact" aria-labelledby="contact-h">
+          <div className="wrap">
+            <div className="blk pair">
+              <div>
+                <h2 id="contact-h">Contact</h2>
+                <p className="ask">Building or fixing a backend? Email me.</p>
+                <p className="ask-sub">Hiring for a backend or full-stack role? Same address.</p>
+                <p>
+                  <a className="plain-link" href={`mailto:${site.email}`}>
+                    {site.email}
+                  </a>
+                </p>
+              </div>
               <dl className="tl">
                 <div>
                   <dt>LinkedIn</dt>

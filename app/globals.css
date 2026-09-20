@@ -169,51 +169,43 @@ a {
   top: 1rem;
 }
 
-/* ---------- Screens: every section is sized to the viewport height ---------- */
-.screen {
-  padding-block: 3.5rem;
-}
-
-@media (min-width: 48rem) {
-  html {
-    scroll-snap-type: y proximity;
-  }
-
-  .screen {
-    min-height: var(--avail);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    scroll-snap-align: start;
-    padding-block: clamp(1.5rem, calc(var(--avail) * 0.05), 4rem);
-  }
-
-  .screen > .wrap {
-    width: 100%;
-  }
-}
-
+/* ---------- Layout: the hero fills the first screen, everything else flows ---------- */
 .screen-hero {
   padding-block: 0;
 }
 
 @media (min-width: 48rem) {
   .screen-hero {
-    justify-content: flex-start;
-    padding-block: 0;
+    min-height: var(--avail);
+    display: flex;
+    flex-direction: column;
   }
 
   .screen-hero > .wrap {
     flex: 1;
+    width: 100%;
     display: flex;
     flex-direction: column;
   }
 }
 
-@media (min-width: 48rem) {
-  #contact.screen {
-    min-height: calc(var(--avail) - 5rem);
-  }
+/* One consistent gap between sections. */
+.sec {
+  padding-block: clamp(1.75rem, 4vw, 3rem);
+}
+
+#contact.sec {
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+/* A block is a rule, then two columns: the heading and meta on the left, the details on the right. */
+.pair {
+  display: grid;
+  gap: 1.4rem clamp(2rem, 5vw, 4rem);
+}
+
+@media (min-width: 60rem) {
+  .pair { grid-template-columns: 4fr 8fr; align-items: start; }
 }
 
 /* ---------- Hero ---------- */
@@ -343,11 +335,15 @@ section[id],
   scroll-margin-top: 0;
 }
 
-/* ---------- Work: one project per screen ---------- */
-.count {
-  margin-left: 0.6rem;
-  color: var(--mute);
-  font-weight: 500;
+/* ---------- Work ---------- */
+.proj {
+  padding-block: clamp(1.4rem, 3vw, 2.2rem);
+  border-top: 1px solid var(--rule);
+}
+
+.blk > h2 + .proj {
+  border-top: 0;
+  padding-top: 0.4rem;
 }
 
 .pname {
@@ -355,7 +351,7 @@ section[id],
   font-weight: 700;
   letter-spacing: -0.045em;
   line-height: 1;
-  font-size: clamp(2rem, min(4.6vw, calc(var(--avail) * 0.075)), 3.8rem);
+  font-size: clamp(2rem, 4vw, 3.4rem);
   text-wrap: balance;
 }
 
@@ -380,12 +376,10 @@ section[id],
 .story > div {
   display: grid;
   gap: 0.3rem 1.5rem;
-  padding-block: clamp(0.8rem, calc(var(--avail) * 0.028), 1.5rem);
-  border-top: 1px solid var(--rule);
+  padding-block: 0.7rem;
 }
 
 .story > div:first-child {
-  border-top: 0;
   padding-top: 0;
 }
 
@@ -402,9 +396,9 @@ section[id],
   margin: 0;
   font-weight: 500;
   letter-spacing: -0.01em;
-  font-size: clamp(1.1rem, min(1.7vw, calc(var(--avail) * 0.034)), 1.45rem);
+  font-size: clamp(1.1rem, 1.5vw, 1.35rem);
   line-height: 1.4;
-  max-width: 40rem;
+  max-width: 44rem;
 }
 
 .facts {
@@ -429,21 +423,18 @@ section[id],
 }
 
 /* ---------- Experience + stack, contact: two balanced columns ---------- */
-.profile {
-  display: grid;
-  gap: 2.5rem clamp(2rem, 5vw, 4rem);
-}
-
-@media (min-width: 60rem) {
-  .profile { grid-template-columns: 5fr 7fr; align-items: start; }
-}
-
 .role {
   margin: 0;
   font-size: clamp(1.6rem, min(3vw, calc(var(--avail) * 0.05)), 2.4rem);
   font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1.1;
+}
+
+.summary {
+  margin: 1.2rem 0 0;
+  color: var(--mute);
+  max-width: 24rem;
 }
 
 .sub {
@@ -475,7 +466,7 @@ section[id],
 }
 
 @media (min-width: 40rem) {
-  .tl > div { grid-template-columns: 9.5rem 1fr; }
+  .tl > div { grid-template-columns: 8rem 1fr; }
 }
 
 .tl dt {
@@ -500,18 +491,6 @@ section[id],
 .ask-sub {
   margin: 0.6rem 0 1.2rem;
   color: var(--mute);
-}
-
-/* Short laptop screens: tighten so each screen still fits */
-@media (min-width: 48rem) and (max-height: 40rem) {
-  .screen { padding-block: 0.75rem; }
-  .pname { font-size: 1.7rem; }
-  .story > div { padding-block: 0.5rem; }
-  .story dd { font-size: 1rem; line-height: 1.35; }
-  .facts li { padding-block: 0.22rem; font-size: 1rem; }
-  .role { font-size: 1.6rem; }
-  .tl > div { padding-block: 0.32rem; }
-  .blk h2 { margin-bottom: 0.6rem; }
 }
 
 /* ---------- Footer ---------- */
@@ -649,11 +628,11 @@ footer.site-footer .wrap {
     display: none;
   }
 
-  .screen {
+  .screen-hero {
     min-height: 0;
   }
 
-  .screen {
+  .proj {
     break-inside: avoid;
   }
 }
