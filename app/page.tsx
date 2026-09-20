@@ -16,6 +16,8 @@ const paletteItems: PaletteItem[] = [
 export default function Page() {
   return (
     <>
+      <div className="bg-mesh" aria-hidden="true" />
+
       <a href="#main" className="skip-link">
         Skip to content
       </a>

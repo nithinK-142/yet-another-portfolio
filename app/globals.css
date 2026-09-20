@@ -12,6 +12,7 @@
   --rule: #e3e3e3;
   --inv-bg: #0c0c0c;
   --inv-ink: #ffffff;
+  --grid: rgba(12, 12, 12, 0.13);
   color-scheme: light dark;
 }
 
@@ -23,6 +24,7 @@
     --rule: #262626;
     --inv-bg: #f3f3f1;
     --inv-ink: #0c0c0c;
+    --grid: rgba(243, 243, 241, 0.14);
   }
 }
 
@@ -33,7 +35,7 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg);
+  position: relative;
   color: var(--ink);
   font-family: var(--font-sans);
   font-size: 1.125rem;
@@ -59,6 +61,27 @@ body {
 
 a {
   color: inherit;
+}
+
+/* ---------- Background mesh ---------- */
+/* A fine grid that fades out from the top-left. Static, decorative, hero area only. */
+.bg-mesh {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: min(115svh, 64rem);
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 44px 44px;
+  background-position: -1px -1px;
+  -webkit-mask-image: radial-gradient(ellipse 95% 90% at 30% 15%, #000 0%, transparent 78%);
+  mask-image: radial-gradient(ellipse 95% 90% at 30% 15%, #000 0%, transparent 78%);
+}
+
+@media (min-width: 48rem) {
+  .bg-mesh { background-size: 56px 56px; }
 }
 
 /* ---------- Header ---------- */
@@ -453,6 +476,7 @@ footer.site-footer .wrap {
 
   .top nav,
   .skip-link,
+  .bg-mesh,
   .pal {
     display: none;
   }
