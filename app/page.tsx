@@ -14,8 +14,6 @@ const paletteItems: PaletteItem[] = [
   { label: "Contact", hint: "section", href: "#contact" },
 ];
 
-const nameLetters = ["N", "i", "t", "h", "i", "n", "\u00a0", "K"];
-
 export default function Page() {
   return (
     <>
@@ -34,42 +32,20 @@ export default function Page() {
           </nav>
         </div>
 
-        <header id="top">
-          <h1 className="name" aria-label={site.name}>
-            {nameLetters.map((ch, i) => (
-              <span key={i} aria-hidden="true">
-                <i>{ch}</i>
-              </span>
-            ))}
-          </h1>
-
-          <div className="strip">
-            <div>
-              Backend-leaning
-              <br />
-              full-stack developer
-            </div>
-            <div>
-              Bangalore<small>Open to relocating</small>
-            </div>
-            <div>
-              Available now<small>Backend or full-stack roles</small>
-            </div>
-            <div>
-              <a href={`mailto:${site.email}`}>Email</a>, <ExternalLink href={site.resume}>Resume</ExternalLink>,
-              <br />
-              <ExternalLink href={site.github}>GitHub</ExternalLink>, <ExternalLink href={site.linkedin}>LinkedIn</ExternalLink>
-            </div>
+        <header id="top" className="hero">
+          <h1>I build the backend that has to keep working.</h1>
+          <p>
+            {site.name}, backend-leaning full-stack developer in Bangalore. Two years shipping payments, order
+            updates and push notifications. <span>Available now, open to relocating.</span>
+          </p>
+          <div className="acts">
+            <a className="button" href={`mailto:${site.email}`}>
+              Email me
+            </a>
+            <ExternalLink href={site.resume}>Resume</ExternalLink>
+            <ExternalLink href={site.github}>GitHub</ExternalLink>
+            <ExternalLink href={site.linkedin}>LinkedIn</ExternalLink>
           </div>
-
-          <p className="statement">
-            I build the backend that has to keep working. <span>Payments, order updates, notifications.</span>
-          </p>
-          <p className="about-line">
-            Two years at C S Tech Infosolutions, mostly on payment and shipping integrations, a push notification
-            system, and keeping live systems running. I&rsquo;d rather script a fix than click through it. Right now
-            I&rsquo;m learning Go by building an e-commerce backend on the standard library.
-          </p>
         </header>
 
         <main id="main">
@@ -129,6 +105,10 @@ export default function Page() {
                     <dd>{t.items}</dd>
                   </div>
                 ))}
+                <div>
+                  <dt>Right now</dt>
+                  <dd>Learning Go by building an e-commerce backend on the standard library.</dd>
+                </div>
               </dl>
             </div>
           </section>
