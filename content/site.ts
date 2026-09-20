@@ -14,7 +14,6 @@ export const projects = [
   {
     id: "dealsdray",
     name: "Dealsdray",
-    short: "B2B e-commerce. Unfinished to production: 30K+ daily users.",
     kind: "B2B e-commerce platform",
     stack: "React, Express, MongoDB, Flutter",
     facts: [
@@ -22,13 +21,11 @@ export const projects = [
       "30K+ daily users, 2K+ orders a month",
       "Razorpay, PayTM, Zoop and Shiprocket, with webhooks",
       "70K+ legacy users and their orders migrated",
-      "Monolith split into four services",
     ],
   },
   {
     id: "notification-console",
     name: "Notification Console",
-    short: "Push notifications. 15 minutes to under one.",
     kind: "Push notification delivery system",
     stack: "React, Express, MongoDB, Go",
     facts: [
@@ -40,7 +37,6 @@ export const projects = [
   {
     id: "rekrafted",
     name: "Rekrafted",
-    short: "Refurbished marketplace. Grading lifted orders 15%.",
     kind: "Refurbished-device marketplace",
     stack: "Next.js, Express, MongoDB",
     facts: [
@@ -52,7 +48,6 @@ export const projects = [
   {
     id: "prexo",
     name: "Prexo",
-    short: "Warehouse system. Cron failures from 50% of runs to zero.",
     kind: "Warehouse processing system",
     stack: "React, Express, MongoDB",
     facts: [

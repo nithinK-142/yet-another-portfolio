@@ -51,40 +51,33 @@ export default function Page() {
         <main id="main">
           <section className="sec" id="work">
             <h2>Selected work, 2024 to 2026</h2>
-            <ul className="index">
+            <div className="projects">
               {projects.map((p) => (
-                <li key={p.id}>
-                  <a href={`#${p.id}`}>
-                    <span className="n">{p.name}</span>
-                    <span className="r">{p.short}</span>
-                  </a>
-                </li>
+                <article className="proj" id={p.id} key={p.id}>
+                  <h3 className="pname">{p.name}</h3>
+                  <div className="pgrid">
+                    <div className="pmeta">
+                      <p className="lead">{p.kind}</p>
+                      <p className="stack">{p.stack}</p>
+                    </div>
+                    <div className="pbody">
+                      <ul className="facts">
+                        {p.facts.map((f) => (
+                          <li key={f}>{f}</li>
+                        ))}
+                      </ul>
+                      {p.link && (
+                        <p className="live">
+                          Live at <ExternalLink href={p.link.href}>{p.link.label}</ExternalLink>
+                        </p>
+                      )}
+                      {p.id === "dealsdray" && <MonolithSplit />}
+                      {p.id === "notification-console" && <CampaignPipeline />}
+                    </div>
+                  </div>
+                </article>
               ))}
-            </ul>
-
-            {projects.map((p) => (
-              <article className="case" id={p.id} key={p.id}>
-                <header>
-                  <h3>{p.name}</h3>
-                  <p className="k">{p.kind}</p>
-                  <p className="st">{p.stack}</p>
-                </header>
-                <div>
-                  <ul className="facts">
-                    {p.facts.map((f) => (
-                      <li key={f}>{f}</li>
-                    ))}
-                  </ul>
-                  {p.link && (
-                    <p className="live">
-                      Live at <ExternalLink href={p.link.href}>{p.link.label}</ExternalLink>
-                    </p>
-                  )}
-                  {p.id === "dealsdray" && <MonolithSplit />}
-                  {p.id === "notification-console" && <CampaignPipeline />}
-                </div>
-              </article>
-            ))}
+            </div>
           </section>
 
           <section className="sec" id="experience">
