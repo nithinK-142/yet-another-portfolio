@@ -58,6 +58,18 @@ export const projects = [
   },
 ];
 
+export const experience = {
+  title: "Full-Stack Developer",
+  company: "C S Tech Infosolutions",
+  place: "Bangalore",
+  when: "September 2024 to May 2026",
+  points: [
+    "Four production applications for clients",
+    "Worked directly with clients on requirements",
+    "Ran live systems: outages, deployments, fixes",
+  ],
+};
+
 export const tools = [
   { group: "Languages", items: "JavaScript, TypeScript, Go" },
   { group: "Frontend", items: "React, Next.js, Tailwind CSS" },
@@ -66,4 +78,5 @@ export const tools = [
   { group: "Infrastructure", items: "Linux, Windows Server, AWS, Docker, PM2, IIS, Plesk" },
   { group: "Integrations", items: "Razorpay, PayTM, Shiprocket, Zoop, Firebase Cloud Messaging" },
   { group: "Observability", items: "OpenTelemetry, Grafana, Prometheus, Sentry, Stackify" },
+  { group: "Right now", items: "Learning Go by building an e-commerce backend on the standard library" },
 ];
