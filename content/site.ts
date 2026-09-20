@@ -17,10 +17,9 @@ export const projects = [
     kind: "B2B e-commerce platform",
     stack: "React, Express, MongoDB, Flutter",
     facts: [
-      "Taken from unfinished to production",
-      "30K+ daily users, 2K+ orders a month",
+      "Unfinished to production: 30K+ daily users, 2K+ orders a month",
       "Razorpay, PayTM, Zoop and Shiprocket, with webhooks",
-      "70K+ legacy users and their orders migrated",
+      "Monolith split into four services",
     ],
   },
   {
@@ -40,7 +39,8 @@ export const projects = [
     kind: "Refurbished-device marketplace",
     stack: "Next.js, Express, MongoDB",
     facts: [
-      "Grade-based listings on 70% of inventory: orders up 15%",
+      "Grade-based listings and pricing on 70% of inventory",
+      "Orders up 15% after grading",
       "10 to 15GB of media moved to ImageKit",
     ],
     link: { href: "https://rekrafted.in/", label: "rekrafted.in" },
@@ -51,6 +51,7 @@ export const projects = [
     kind: "Warehouse processing system",
     stack: "React, Express, MongoDB",
     facts: [
+      "Unsellable units put back in as fresh imports",
       "30% more inventory recovered",
       "Cron failures cut from 50% of runs to 0%",
     ],

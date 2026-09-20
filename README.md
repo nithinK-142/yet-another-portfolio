@@ -23,7 +23,6 @@ pnpm lint
 | --- | --- |
 | `content/site.ts` | Email, links, project text, tools list. Edit copy here. |
 | `app/page.tsx` | Page structure |
-| `components/Diagrams.tsx` | The two small text diagrams |
 | `components/CommandPalette.tsx` | Ctrl/Cmd+K (or `/`) palette: links, copy email, jump to projects |
 | `app/globals.css` | Colours and all custom styles |
 | `app/opengraph-image.tsx` | Link-preview PNG, generated at build time |
@@ -32,5 +31,5 @@ pnpm lint
 ## Rules for edits
 
 - Every claim on the page comes from the resume. Do not add numbers that are not in it.
-- Project descriptions stay short: one line in the index, a few terse facts below.
+- Every project has exactly three short points, and no diagrams or images.
 - No screenshots, no education section, email stays normal size.

@@ -224,43 +224,40 @@ article[id] {
 }
 
 .proj {
-  padding-block: clamp(2rem, 5vw, 4rem);
+  display: grid;
+  gap: 1.2rem 3rem;
+  padding-block: clamp(1.8rem, 4vw, 3rem);
   border-bottom: 1px solid var(--rule);
+}
+
+@media (min-width: 60rem) {
+  .proj { grid-template-columns: 4fr 8fr; align-items: start; }
+  .pmeta { position: sticky; top: 1.5rem; }
 }
 
 .pname {
   margin: 0;
   font-weight: 700;
-  letter-spacing: -0.055em;
-  line-height: 0.92;
-  font-size: clamp(2.8rem, 9.2vw, 9rem);
+  letter-spacing: -0.045em;
+  line-height: 1;
+  font-size: clamp(2rem, 4.4vw, 3.75rem);
   text-wrap: balance;
 }
 
-.pgrid {
-  display: grid;
-  gap: 1.4rem 3rem;
-  margin-top: clamp(1.4rem, 3vw, 2.4rem);
-}
-
-@media (min-width: 60rem) {
-  .pgrid { grid-template-columns: 5fr 7fr; }
-}
-
 .pmeta .lead {
-  margin: 0;
+  margin: 0.8rem 0 0;
   font-weight: 600;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
 }
 
 .pmeta .stack {
-  margin: 0.4rem 0 0;
+  margin: 0.3rem 0 0;
   color: var(--mute);
   font-weight: 500;
 }
 
-.pbody {
-  min-width: 0;
+.pmeta .live {
+  margin: 0.7rem 0 0;
 }
 
 .facts {
@@ -268,180 +265,16 @@ article[id] {
   padding: 0;
   list-style: none;
   border-top: 1px solid var(--rule);
-  max-width: 44rem;
+  max-width: 52rem;
 }
 
 .facts li {
-  padding: 0.7rem 0;
+  padding: 0.75rem 0;
   border-bottom: 1px solid var(--rule);
   font-weight: 500;
   letter-spacing: -0.015em;
   font-size: clamp(1.2rem, 2vw, 1.6rem);
   line-height: 1.25;
-}
-
-.pbody .live {
-  margin: 1.2rem 0 0;
-}
-
-/* ---------- Diagrams ---------- */
-.fig {
-  margin: 2rem 0 0;
-  max-width: 44rem;
-}
-
-.fig figcaption {
-  margin-top: 0.8rem;
-  color: var(--mute);
-  font-size: 0.95rem;
-}
-
-.flow,
-.nodes {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-.flow > li,
-.nodes > li {
-  position: relative;
-  border: 2px solid var(--ink);
-  padding: 0.75rem 1rem;
-  line-height: 1.3;
-  background: var(--bg);
-}
-
-.flow small,
-.nodes small {
-  display: block;
-  margin-top: 0.15rem;
-  color: var(--mute);
-  font-weight: 500;
-  font-size: 0.92rem;
-}
-
-/* Pipeline: top-to-bottom on phones, left-to-right on wider screens */
-.flow {
-  display: grid;
-  gap: 1.6rem;
-}
-
-.flow > li:not(:first-child)::before {
-  content: "";
-  position: absolute;
-  left: 1.4rem;
-  bottom: 100%;
-  height: 1.6rem;
-  border-left: 2px solid var(--ink);
-}
-
-.flow > li:not(:first-child)::after {
-  content: "";
-  position: absolute;
-  left: calc(1.4rem - 3.5px);
-  bottom: calc(100% + 2px);
-  width: 9px;
-  height: 9px;
-  border-right: 2px solid var(--ink);
-  border-bottom: 2px solid var(--ink);
-  transform: rotate(45deg);
-}
-
-@media (min-width: 48rem) {
-  .flow {
-    grid-auto-flow: column;
-    grid-auto-columns: 1fr;
-    gap: 2.6rem;
-    align-items: stretch;
-  }
-
-  .flow > li {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .flow > li:not(:first-child)::before {
-    left: auto;
-    right: 100%;
-    bottom: auto;
-    top: 50%;
-    width: 2.6rem;
-    height: 0;
-    border-left: 0;
-    border-top: 2px solid var(--ink);
-  }
-
-  .flow > li:not(:first-child)::after {
-    left: auto;
-    right: calc(100% + 2px);
-    bottom: auto;
-    top: calc(50% - 3.5px);
-    transform: rotate(-45deg);
-  }
-}
-
-/* Before / after split */
-.split {
-  display: grid;
-  gap: 2.4rem;
-}
-
-.split-row {
-  display: grid;
-  gap: 0.6rem;
-}
-
-@media (min-width: 48rem) {
-  .split-row {
-    grid-template-columns: 5rem 1fr;
-    align-items: center;
-    gap: 1.4rem;
-  }
-}
-
-.split-label {
-  margin: 0;
-  font-weight: 600;
-  color: var(--mute);
-}
-
-.nodes {
-  display: grid;
-  gap: 0.75rem;
-}
-
-.nodes-4 {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-@media (min-width: 48rem) {
-  .nodes-4 { grid-template-columns: repeat(4, 1fr); }
-
-  /* one arrow per service, from the monolith down */
-  .nodes-4 > li::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 100%;
-    height: 2.4rem;
-    border-left: 2px solid var(--ink);
-  }
-
-  .nodes-4 > li::after {
-    content: "";
-    position: absolute;
-    left: calc(50% - 3.5px);
-    bottom: calc(100% + 2px);
-    width: 9px;
-    height: 9px;
-    border-right: 2px solid var(--ink);
-    border-bottom: 2px solid var(--ink);
-    transform: rotate(45deg);
-  }
 }
 
 /* ---------- Experience ---------- */
@@ -624,8 +457,7 @@ footer.site-footer .wrap {
     display: none;
   }
 
-  .proj,
-  .fig {
+  .proj {
     break-inside: avoid;
   }
 }

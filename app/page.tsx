@@ -1,4 +1,3 @@
-import { CampaignPipeline, MonolithSplit } from "@/components/Diagrams";
 import { CommandPalette, type PaletteItem } from "@/components/CommandPalette";
 import { ExternalLink } from "@/components/Links";
 import { projects, site, tools } from "@/content/site";
@@ -54,27 +53,21 @@ export default function Page() {
             <div className="projects">
               {projects.map((p) => (
                 <article className="proj" id={p.id} key={p.id}>
-                  <h3 className="pname">{p.name}</h3>
-                  <div className="pgrid">
-                    <div className="pmeta">
-                      <p className="lead">{p.kind}</p>
-                      <p className="stack">{p.stack}</p>
-                    </div>
-                    <div className="pbody">
-                      <ul className="facts">
-                        {p.facts.map((f) => (
-                          <li key={f}>{f}</li>
-                        ))}
-                      </ul>
-                      {p.link && (
-                        <p className="live">
-                          Live at <ExternalLink href={p.link.href}>{p.link.label}</ExternalLink>
-                        </p>
-                      )}
-                      {p.id === "dealsdray" && <MonolithSplit />}
-                      {p.id === "notification-console" && <CampaignPipeline />}
-                    </div>
+                  <div className="pmeta">
+                    <h3 className="pname">{p.name}</h3>
+                    <p className="lead">{p.kind}</p>
+                    <p className="stack">{p.stack}</p>
+                    {p.link && (
+                      <p className="live">
+                        Live at <ExternalLink href={p.link.href}>{p.link.label}</ExternalLink>
+                      </p>
+                    )}
                   </div>
+                  <ul className="facts">
+                    {p.facts.map((f) => (
+                      <li key={f}>{f}</li>
+                    ))}
+                  </ul>
                 </article>
               ))}
             </div>
