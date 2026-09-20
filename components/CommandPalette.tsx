@@ -10,6 +10,28 @@ export type PaletteItem = {
   external?: boolean;
 };
 
+async function copyText(text: string): Promise<boolean> {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    try {
+      const t = document.createElement("textarea");
+      t.value = text;
+      t.setAttribute("readonly", "");
+      t.style.position = "fixed";
+      t.style.opacity = "0";
+      document.body.appendChild(t);
+      t.select();
+      const ok = document.execCommand("copy");
+      document.body.removeChild(t);
+      return ok;
+    } catch {
+      return false;
+    }
+  }
+}
+
 /** Ctrl/Cmd+K (or "/") opens a keyboard-driven list of links and jumps. */
 export function CommandPalette({ items }: { items: PaletteItem[] }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -17,6 +39,7 @@ export function CommandPalette({ items }: { items: PaletteItem[] }) {
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
   const [status, setStatus] = useState("");
+  const [toast, setToast] = useState("");
   const mac = useSyncExternalStore(
     () => () => {},
     () => /Mac|iPhone|iPad/.test(navigator.platform),
@@ -45,12 +68,9 @@ export function CommandPalette({ items }: { items: PaletteItem[] }) {
 
   async function run(item: PaletteItem) {
     if (item.copy) {
-      try {
-        await navigator.clipboard.writeText(item.copy);
-        setStatus("Copied");
-      } catch {
-        setStatus("Copy failed");
-      }
+      const ok = await copyText(item.copy);
+      close();
+      setToast(ok ? `Copied: ${item.copy}` : `Couldn't copy. Email: ${item.copy}`);
       return;
     }
     close();
@@ -58,6 +78,12 @@ export function CommandPalette({ items }: { items: PaletteItem[] }) {
     if (item.external) window.open(item.href, "_blank", "noopener,noreferrer");
     else window.location.href = item.href;
   }
+
+  useEffect(() => {
+    if (!toast) return;
+    const t = window.setTimeout(() => setToast(""), 2800);
+    return () => window.clearTimeout(t);
+  }, [toast]);
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -161,6 +187,10 @@ export function CommandPalette({ items }: { items: PaletteItem[] }) {
           {status || "Enter to open, Esc to close"}
         </p>
       </dialog>
+
+      <div className={toast ? "toast on" : "toast"} role="status" aria-live="polite">
+        {toast}
+      </div>
     </>
   );
 }

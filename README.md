@@ -31,5 +31,8 @@ pnpm lint
 ## Rules for edits
 
 - Every claim on the page comes from the resume. Do not add numbers that are not in it.
+- The name appears once, in the top bar. Do not put it in the hero, footer, or elsewhere.
+- Order of screens: hero, experience and stack, work, contact. Each fits the viewport below the sticky bar.
+- One fixed grid background sits behind every screen.
 - Every project has exactly three short points, and no diagrams or images.
 - No screenshots, no education section, email stays normal size.

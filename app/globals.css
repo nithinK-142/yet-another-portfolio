@@ -12,7 +12,7 @@
   --rule: #e3e3e3;
   --inv-bg: #0c0c0c;
   --inv-ink: #ffffff;
-  --grid: rgba(12, 12, 12, 0.13);
+  --grid: rgba(12, 12, 12, 0.075);
   --bar: 4rem;
   --avail: calc(100svh - var(--bar));
   color-scheme: light dark;
@@ -26,7 +26,7 @@
     --rule: #262626;
     --inv-bg: #f3f3f1;
     --inv-ink: #0c0c0c;
-    --grid: rgba(243, 243, 241, 0.14);
+    --grid: rgba(243, 243, 241, 0.08);
   }
 }
 
@@ -67,11 +67,10 @@ a {
 }
 
 /* ---------- Background mesh ---------- */
-/* A fine grid that fades out from the top-left. Static, decorative, hero area only. */
+/* One fixed grid behind every screen, so the background is the same everywhere. */
 .bg-mesh {
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: min(115svh, 64rem);
+  position: fixed;
+  inset: 0;
   z-index: -1;
   pointer-events: none;
   background-image:
@@ -79,8 +78,8 @@ a {
     linear-gradient(90deg, var(--grid) 1px, transparent 1px);
   background-size: 44px 44px;
   background-position: -1px -1px;
-  -webkit-mask-image: radial-gradient(ellipse 95% 90% at 30% 15%, #000 0%, transparent 78%);
-  mask-image: radial-gradient(ellipse 95% 90% at 30% 15%, #000 0%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 150% 130% at 50% 45%, #000 45%, transparent 100%);
+  mask-image: radial-gradient(ellipse 150% 130% at 50% 45%, #000 45%, transparent 100%);
 }
 
 @media (min-width: 48rem) {
@@ -222,25 +221,50 @@ a {
   }
 }
 
+.hero-grid {
+  display: grid;
+  gap: 2rem 4rem;
+  align-items: end;
+}
+
+@media (min-width: 62rem) {
+  .hero-grid { grid-template-columns: minmax(0, 8fr) minmax(0, 3fr); }
+}
+
 .hero h1 {
   margin: 0;
-  font-size: clamp(2.6rem, min(7.6vw, calc(var(--avail) * 0.125)), 7.2rem);
+  font-size: clamp(2.3rem, min(5.6vw, calc(var(--avail) * 0.105)), 5.6rem);
   font-weight: 700;
   letter-spacing: -0.05em;
-  line-height: 0.98;
-  max-width: 13ch;
+  line-height: 1.02;
   text-wrap: balance;
 }
 
-.hero p {
-  margin: clamp(1.1rem, calc(var(--avail) * 0.03), 2.2rem) 0 0;
-  max-width: 34rem;
-  font-size: clamp(1.1rem, min(1.7vw, calc(var(--avail) * 0.031)), 1.4rem);
-  line-height: 1.45;
+.hero h1 .u {
+  text-decoration: underline;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.11em;
 }
 
-.hero p span {
+.hero p {
+  margin: clamp(1.1rem, calc(var(--avail) * 0.03), 2rem) 0 0;
+  max-width: 36rem;
+  font-size: clamp(1.1rem, min(1.6vw, calc(var(--avail) * 0.031)), 1.35rem);
+  line-height: 1.45;
   color: var(--mute);
+}
+
+.hero-meta {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid var(--ink);
+}
+
+.hero-meta li {
+  padding-block: 0.65rem;
+  border-bottom: 1px solid var(--rule);
+  font-weight: 500;
 }
 
 .acts {
@@ -549,6 +573,31 @@ footer.site-footer .wrap {
 .pal-status {
   margin: 0;
   border-top: 1px solid var(--rule);
+}
+
+/* ---------- Toast ---------- */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  z-index: 60;
+  max-width: calc(100vw - 2rem);
+  padding: 0.8rem 1.2rem;
+  background: var(--inv-bg);
+  color: var(--inv-ink);
+  font-weight: 600;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 8px);
+}
+
+.toast.on {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .toast { transition: opacity 0.15s, transform 0.15s; }
 }
 
 /* ---------- Print ---------- */

@@ -8,9 +8,9 @@ const paletteItems: PaletteItem[] = [
   { label: "Resume", hint: "PDF", href: site.resume, external: true },
   { label: "GitHub", hint: "nithinK-142", href: site.github, external: true },
   { label: "LinkedIn", hint: "nithin142", href: site.linkedin, external: true },
-  ...projects.map((p) => ({ label: p.name, hint: "in Work", href: "#work" })),
   { label: "Experience", hint: "section", href: "#experience" },
   { label: "Stack", hint: "section", href: "#stack" },
+  ...projects.map((p) => ({ label: p.name, hint: "in Work", href: "#work" })),
   { label: "Contact", hint: "section", href: "#contact" },
 ];
 
@@ -23,13 +23,13 @@ export default function Page() {
         Skip to content
       </a>
 
-      {/* Sticky bar: stays visible on every screen. */}
+      {/* Sticky bar: stays visible on every screen. The name appears here and nowhere else. */}
       <div className="topbar">
         <div className="wrap top">
           <a href="#top">{site.name}</a>
           <nav aria-label="Primary">
-            <a href="#work">Work</a>
             <a href="#experience">Experience</a>
+            <a href="#work">Work</a>
             <a href="#contact">Contact</a>
             <CommandPalette items={paletteItems} />
           </nav>
@@ -40,56 +40,33 @@ export default function Page() {
       <div className="screen screen-hero">
         <div className="wrap">
           <header id="top" className="hero">
-            <h1>I build the backend that has to keep working.</h1>
-            <p>
-              {site.name}, backend-leaning full-stack developer in Bangalore. Two years shipping payments, order
-              updates and push notifications. <span>Available now, open to relocating.</span>
-            </p>
-            <div className="acts">
-              <a className="button" href={`mailto:${site.email}`}>
-                Email me
-              </a>
-              <ExternalLink href={site.resume}>Resume</ExternalLink>
-              <ExternalLink href={site.github}>GitHub</ExternalLink>
-              <ExternalLink href={site.linkedin}>LinkedIn</ExternalLink>
+            <div className="hero-grid">
+              <div>
+                <h1>
+                  Backend developer for <span className="u">payments</span>, <span className="u">webhooks</span> and{" "}
+                  <span className="u">notification systems</span>.
+                </h1>
+                <p>Commerce and operations software for clients, from a B2B marketplace to a warehouse system.</p>
+                <div className="acts">
+                  <a className="button" href={`mailto:${site.email}`}>
+                    Email me
+                  </a>
+                  <ExternalLink href={site.resume}>Resume</ExternalLink>
+                  <ExternalLink href={site.github}>GitHub</ExternalLink>
+                  <ExternalLink href={site.linkedin}>LinkedIn</ExternalLink>
+                </div>
+              </div>
+              <ul className="hero-meta">
+                <li>Available now</li>
+                <li>Bangalore, open to relocating</li>
+                <li>2 years in production</li>
+              </ul>
             </div>
           </header>
         </div>
       </div>
 
       <main id="main">
-        <section className="screen" id="work" aria-labelledby="work-h">
-          <div className="wrap">
-            <div className="blk">
-              <h2 id="work-h">Selected work, 2024 to 2026</h2>
-              <div className="projects">
-                {projects.map((p) => (
-                  <article className="proj" id={p.id} key={p.id}>
-                    <div className="pmeta">
-                      <h3 className="pname">{p.name}</h3>
-                      <p className="lead">{p.kind}</p>
-                      <p className="stack">
-                        {p.stack}
-                        {p.link && (
-                          <>
-                            {" "}
-                            <ExternalLink href={p.link.href}>{p.link.label}</ExternalLink>
-                          </>
-                        )}
-                      </p>
-                    </div>
-                    <ul className="facts">
-                      {p.facts.map((f) => (
-                        <li key={f}>{f}</li>
-                      ))}
-                    </ul>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
         <section className="screen" id="experience" aria-label="Experience and stack">
           <div className="wrap profile">
             <div className="blk">
@@ -120,12 +97,44 @@ export default function Page() {
           </div>
         </section>
 
+        <section className="screen" id="work" aria-labelledby="work-h">
+          <div className="wrap">
+            <div className="blk">
+              <h2 id="work-h">Work</h2>
+              <div className="projects">
+                {projects.map((p) => (
+                  <article className="proj" id={p.id} key={p.id}>
+                    <div className="pmeta">
+                      <h3 className="pname">{p.name}</h3>
+                      <p className="lead">{p.kind}</p>
+                      <p className="stack">
+                        {p.stack}
+                        {p.link && (
+                          <>
+                            {" "}
+                            <ExternalLink href={p.link.href}>{p.link.label}</ExternalLink>
+                          </>
+                        )}
+                      </p>
+                    </div>
+                    <ul className="facts">
+                      {p.facts.map((f) => (
+                        <li key={f}>{f}</li>
+                      ))}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="screen screen-last" id="contact" aria-labelledby="contact-h">
           <div className="wrap profile">
             <div className="blk">
               <h2 id="contact-h">Contact</h2>
-              <p className="ask">If you&rsquo;re hiring for backend or full-stack work, email me.</p>
-              <p className="ask-sub">Bangalore, open to relocating.</p>
+              <p className="ask">Payments, webhooks or notifications giving you trouble? Email me.</p>
+              <p className="ask-sub">Hiring for a backend or full-stack role? Same address.</p>
               <p>
                 <a className="plain-link" href={`mailto:${site.email}`}>
                   {site.email}
@@ -162,9 +171,7 @@ export default function Page() {
       <footer className="site-footer">
         <div className="wrap">
           <span>Less talk. More git push.</span>
-          <span>
-            &copy; {new Date().getFullYear()} {site.name}
-          </span>
+          <span>&copy; {new Date().getFullYear()}</span>
         </div>
       </footer>
     </>

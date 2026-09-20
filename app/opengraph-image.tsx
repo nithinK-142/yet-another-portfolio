@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
-export const alt = "Nithin K, backend developer. I build the backend that has to keep working.";
+export const alt = "Backend developer for payments, webhooks and notification systems.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -27,20 +27,20 @@ export default async function OpengraphImage() {
           fontFamily: "Schibsted",
         }}
       >
-        <div style={{ fontSize: 34, fontWeight: 800, letterSpacing: "-0.02em" }}>Nithin K</div>
+        <div style={{ fontSize: 30, fontWeight: 400, color: "#66686b" }}>Available now</div>
         <div
           style={{
-            fontSize: 118,
+            fontSize: 92,
             fontWeight: 800,
             lineHeight: 0.98,
             letterSpacing: "-0.055em",
             maxWidth: 1020,
           }}
         >
-          I build the backend that has to keep working.
+          Backend developer for payments, webhooks and notification systems.
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 30, color: "#66686b", fontWeight: 400 }}>
-          <span>Backend-leaning full-stack developer, Bangalore</span>
+          <span>Bangalore, open to relocating</span>
           <span>nithin.me</span>
         </div>
       </div>
