@@ -14,47 +14,36 @@ export const projects = [
   {
     id: "dealsdray",
     name: "Dealsdray",
-    kind: "B2B e-commerce platform",
     stack: "React, Express, MongoDB, Flutter",
-    facts: [
-      "Unfinished to production: 30K+ daily users, 2K+ orders a month",
-      "Razorpay, PayTM, Zoop and Shiprocket, with webhooks",
-      "Monolith split into four services",
-    ],
+    context: "A B2B e-commerce platform that was still unfinished.",
+    did: "Built and shipped major parts of it. Integrated Razorpay, PayTM, Zoop and Shiprocket for payments and shipping, and migrated 70K+ legacy users and their orders.",
+    result:
+      "Live in production with 30K+ daily users and 2K+ orders a month. I later split it into four services (API, cron, notifications, payments) so each can be released and scaled on its own.",
   },
   {
     id: "notification-console",
     name: "Notification Console",
-    kind: "Push notification delivery system",
     stack: "React, Express, MongoDB, Go",
-    facts: [
-      "Campaign runs cut from 15 minutes to under one",
-      "Priority order, concurrent batches, crash recovery",
-      "80K+ device tokens, 10K+ campaigns",
-    ],
+    context: "Sending a large push notification campaign took about 15 minutes.",
+    did: "Designed and built a console that sends in priority order and in concurrent batches, and recovers if a run crashes partway.",
+    result: "Campaign runs now finish in under a minute. It has handled 80K+ device tokens and 10K+ campaigns.",
   },
   {
     id: "rekrafted",
     name: "Rekrafted",
-    kind: "Refurbished-device marketplace",
     stack: "Next.js, Express, MongoDB",
-    facts: [
-      "Grade-based listings and pricing on 70% of inventory",
-      "Orders up 15% after grading",
-      "10 to 15GB of media moved to ImageKit",
-    ],
+    context: "A marketplace for refurbished devices.",
+    did: "Built product grading, so listings and pricing vary by a device's condition grade. Moved the 10 to 15GB media library off the API server onto ImageKit.",
+    result: "70% of inventory now sits in graded listings, and orders are up 15%. The API server no longer stores the media.",
     link: { href: "https://rekrafted.in/", label: "rekrafted.in" },
   },
   {
     id: "prexo",
     name: "Prexo",
-    kind: "Warehouse processing system",
     stack: "React, Express, MongoDB",
-    facts: [
-      "Unsellable units put back in as fresh imports",
-      "30% more inventory recovered",
-      "Cron failures cut from 50% of runs to 0%",
-    ],
+    context: "A warehouse processing system whose scheduled jobs on Windows Server failed on 50% of runs.",
+    did: "Moved the jobs into a service managed by NSSM. Built a recovery utility that puts unsellable units back in as fresh imports.",
+    result: "Job failures dropped to 0%, and 30% more inventory is recovered than before.",
   },
 ];
 
@@ -78,5 +67,4 @@ export const tools = [
   { group: "Infrastructure", items: "Linux, Windows Server, AWS, Docker, PM2, IIS, Plesk" },
   { group: "Integrations", items: "Razorpay, PayTM, Shiprocket, Zoop, Firebase Cloud Messaging" },
   { group: "Observability", items: "OpenTelemetry, Grafana, Prometheus, Sentry, Stackify" },
-  { group: "Right now", items: "Learning Go by building an e-commerce backend on the standard library" },
 ];

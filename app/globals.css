@@ -138,6 +138,16 @@ a {
   text-decoration: none;
 }
 
+.mark {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  background: var(--inv-bg);
+  color: var(--inv-ink);
+  border-radius: 3px;
+}
+
 .top nav a:hover {
   text-decoration: underline;
   text-underline-offset: 0.25em;
@@ -333,21 +343,11 @@ section[id],
   scroll-margin-top: 0;
 }
 
-/* ---------- Work ---------- */
-.proj {
-  display: grid;
-  gap: 0.9rem 3rem;
-  padding-block: clamp(0.7rem, calc(var(--avail) * 0.022), 1.5rem);
-  border-top: 1px solid var(--rule);
-}
-
-.proj:first-child {
-  border-top: 0;
-  padding-top: 0;
-}
-
-@media (min-width: 60rem) {
-  .proj { grid-template-columns: 4fr 8fr; align-items: start; }
+/* ---------- Work: one project per screen ---------- */
+.count {
+  margin-left: 0.6rem;
+  color: var(--mute);
+  font-weight: 500;
 }
 
 .pname {
@@ -355,25 +355,56 @@ section[id],
   font-weight: 700;
   letter-spacing: -0.045em;
   line-height: 1;
-  font-size: clamp(1.7rem, min(4.2vw, calc(var(--avail) * 0.06)), 3.6rem);
+  font-size: clamp(2rem, min(4.6vw, calc(var(--avail) * 0.075)), 3.8rem);
   text-wrap: balance;
 }
 
-.pmeta .lead {
-  margin: 0.5rem 0 0;
-  font-weight: 600;
-  font-size: clamp(1rem, calc(var(--avail) * 0.024), 1.2rem);
-}
-
-.pmeta .stack {
-  margin: 0.2rem 0 0;
+.stack {
+  margin: 0.7rem 0 0;
   color: var(--mute);
   font-weight: 500;
-  font-size: 0.95rem;
 }
 
-.pmeta .stack a {
+.stack + .stack {
+  margin-top: 0.2rem;
+}
+
+.stack a {
   color: var(--ink);
+}
+
+.story {
+  margin: 0;
+}
+
+.story > div {
+  display: grid;
+  gap: 0.3rem 1.5rem;
+  padding-block: clamp(0.8rem, calc(var(--avail) * 0.028), 1.5rem);
+  border-top: 1px solid var(--rule);
+}
+
+.story > div:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+@media (min-width: 40rem) {
+  .story > div { grid-template-columns: 8rem 1fr; }
+}
+
+.story dt {
+  color: var(--mute);
+  font-weight: 500;
+}
+
+.story dd {
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  font-size: clamp(1.1rem, min(1.7vw, calc(var(--avail) * 0.034)), 1.45rem);
+  line-height: 1.4;
+  max-width: 40rem;
 }
 
 .facts {
@@ -474,10 +505,10 @@ section[id],
 /* Short laptop screens: tighten so each screen still fits */
 @media (min-width: 48rem) and (max-height: 40rem) {
   .screen { padding-block: 0.75rem; }
-  .proj { padding-block: 0.5rem; }
-  .pname { font-size: 1.6rem; }
+  .pname { font-size: 1.7rem; }
+  .story > div { padding-block: 0.5rem; }
+  .story dd { font-size: 1rem; line-height: 1.35; }
   .facts li { padding-block: 0.22rem; font-size: 1rem; }
-  .pmeta .lead { margin-top: 0.3rem; font-size: 1rem; }
   .role { font-size: 1.6rem; }
   .tl > div { padding-block: 0.32rem; }
   .blk h2 { margin-bottom: 0.6rem; }
@@ -622,7 +653,7 @@ footer.site-footer .wrap {
     min-height: 0;
   }
 
-  .proj {
+  .screen {
     break-inside: avoid;
   }
 }

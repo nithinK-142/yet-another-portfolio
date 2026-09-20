@@ -10,7 +10,7 @@ const paletteItems: PaletteItem[] = [
   { label: "LinkedIn", hint: "nithin142", href: site.linkedin, external: true },
   { label: "Experience", hint: "section", href: "#experience" },
   { label: "Stack", hint: "section", href: "#stack" },
-  ...projects.map((p) => ({ label: p.name, hint: "in Work", href: "#work" })),
+  ...projects.map((p) => ({ label: p.name, hint: "project", href: `#${p.id}` })),
   { label: "Contact", hint: "section", href: "#contact" },
 ];
 
@@ -23,13 +23,17 @@ export default function Page() {
         Skip to content
       </a>
 
-      {/* Sticky bar: stays visible on every screen. The name appears here and nowhere else. */}
+      {/* Sticky bar: stays visible on every screen. The name is not shown on the page; the mark stands in for it. */}
       <div className="topbar">
         <div className="wrap top">
-          <a href="#top">{site.name}</a>
+          <a href="#top" className="mark" aria-label="Back to top">
+            <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true">
+              <path d="M9 24V8l14 16V8" fill="none" stroke="currentColor" strokeWidth="3" strokeLinejoin="miter" />
+            </svg>
+          </a>
           <nav aria-label="Primary">
             <a href="#experience">Experience</a>
-            <a href="#work">Work</a>
+            <a href="#dealsdray">Work</a>
             <a href="#contact">Contact</a>
             <CommandPalette items={paletteItems} />
           </nav>
@@ -97,37 +101,42 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="screen" id="work" aria-labelledby="work-h">
-          <div className="wrap">
-            <div className="blk">
-              <h2 id="work-h">Work</h2>
-              <div className="projects">
-                {projects.map((p) => (
-                  <article className="proj" id={p.id} key={p.id}>
-                    <div className="pmeta">
-                      <h3 className="pname">{p.name}</h3>
-                      <p className="lead">{p.kind}</p>
-                      <p className="stack">
-                        {p.stack}
-                        {p.link && (
-                          <>
-                            {" "}
-                            <ExternalLink href={p.link.href}>{p.link.label}</ExternalLink>
-                          </>
-                        )}
-                      </p>
-                    </div>
-                    <ul className="facts">
-                      {p.facts.map((f) => (
-                        <li key={f}>{f}</li>
-                      ))}
-                    </ul>
-                  </article>
-                ))}
+        {projects.map((p, i) => (
+          <section className="screen" id={p.id} key={p.id} aria-labelledby={`${p.id}-h`}>
+            <div className="wrap profile">
+              <div className="blk">
+                <h2>
+                  Work <span className="count">{i + 1} of {projects.length}</span>
+                </h2>
+                <h3 className="pname" id={`${p.id}-h`}>
+                  {p.name}
+                </h3>
+                <p className="stack">{p.stack}</p>
+                {p.link && (
+                  <p className="stack">
+                    <ExternalLink href={p.link.href}>{p.link.label}</ExternalLink>
+                  </p>
+                )}
+              </div>
+              <div className="blk">
+                <dl className="story">
+                  <div>
+                    <dt>Context</dt>
+                    <dd>{p.context}</dd>
+                  </div>
+                  <div>
+                    <dt>What I did</dt>
+                    <dd>{p.did}</dd>
+                  </div>
+                  <div>
+                    <dt>Result</dt>
+                    <dd>{p.result}</dd>
+                  </div>
+                </dl>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        ))}
 
         <section className="screen screen-last" id="contact" aria-labelledby="contact-h">
           <div className="wrap profile">
