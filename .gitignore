@@ -34,3 +34,6 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+
+# Next.js generated TypeScript environment file
+next-env.d.ts
