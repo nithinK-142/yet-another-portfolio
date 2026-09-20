@@ -1,6 +1,6 @@
 # nithin.me
 
-Single-page portfolio. Server-rendered, no client JavaScript, no images.
+Single-page portfolio. Server-rendered, no images. One small client component: the Ctrl/Cmd+K command palette.
 Light by default, dark with the OS setting.
 
 ## Stack
@@ -24,6 +24,7 @@ pnpm lint
 | `content/site.ts` | Email, links, project text, tools list. Edit copy here. |
 | `app/page.tsx` | Page structure |
 | `components/Diagrams.tsx` | The two small text diagrams |
+| `components/CommandPalette.tsx` | Ctrl/Cmd+K (or `/`) palette: links, copy email, jump to projects |
 | `app/globals.css` | Colours and all custom styles |
 | `app/opengraph-image.tsx` | Link-preview PNG, generated at build time |
 | `public/nithin-public-resume.pdf` | Resume linked from the page |

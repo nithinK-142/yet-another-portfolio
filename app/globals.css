@@ -72,7 +72,29 @@ a {
 
 .top nav {
   display: flex;
+  align-items: baseline;
   gap: 1.6rem;
+}
+
+.kbd {
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--mute);
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 0.15rem 0.55rem;
+  cursor: pointer;
+}
+
+.kbd:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+@media (max-width: 40rem) {
+  .kbd { display: none; }
 }
 
 .top a {
@@ -186,6 +208,11 @@ a {
 
 .statement span {
   color: var(--mute);
+}
+
+.about-line {
+  max-width: 40rem;
+  margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
 }
 
 /* ---------- Sections ---------- */
@@ -430,6 +457,83 @@ footer.site-footer .wrap {
   gap: 0.4rem 2rem;
 }
 
+/* ---------- Command palette ---------- */
+.pal {
+  padding: 0;
+  border: 2px solid var(--ink);
+  border-radius: 0;
+  background: var(--bg);
+  color: var(--ink);
+  width: min(34rem, calc(100vw - 2rem));
+  margin: 12vh auto 0;
+}
+
+.pal::backdrop {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.pal input {
+  width: 100%;
+  font: inherit;
+  font-weight: 600;
+  padding: 1rem 1.1rem;
+  background: transparent;
+  color: inherit;
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  outline: 0;
+}
+
+.pal-list {
+  padding: 0.3rem;
+  max-height: 20rem;
+  overflow: auto;
+}
+
+.pal-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  text-align: left;
+  text-decoration: none;
+  font: inherit;
+  font-weight: 600;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.pal-row small {
+  color: var(--mute);
+  font-size: 0.9rem;
+  font-weight: 500;
+  align-self: center;
+}
+
+.pal-row[aria-selected="true"] {
+  background: var(--inv-bg);
+  color: var(--inv-ink);
+}
+
+.pal-row[aria-selected="true"] small {
+  color: inherit;
+}
+
+.pal-empty,
+.pal-status {
+  padding: 0.7rem 0.8rem;
+  color: var(--mute);
+  font-size: 0.9rem;
+}
+
+.pal-status {
+  margin: 0;
+  border-top: 1px solid var(--rule);
+}
+
 /* ---------- Print ---------- */
 @media print {
   :root {
@@ -442,7 +546,8 @@ footer.site-footer .wrap {
   }
 
   .top nav,
-  .skip-link {
+  .skip-link,
+  .pal {
     display: none;
   }
 

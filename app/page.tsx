@@ -1,6 +1,18 @@
 import { CampaignPipeline, MonolithSplit } from "@/components/Diagrams";
+import { CommandPalette, type PaletteItem } from "@/components/CommandPalette";
 import { ExternalLink } from "@/components/Links";
 import { projects, site, tools } from "@/content/site";
+
+const paletteItems: PaletteItem[] = [
+  { label: "Email me", hint: site.email, href: `mailto:${site.email}` },
+  { label: "Copy email", hint: "to clipboard", copy: site.email },
+  { label: "Resume", hint: "PDF", href: site.resume, external: true },
+  { label: "GitHub", hint: "nithinK-142", href: site.github, external: true },
+  { label: "LinkedIn", hint: "nithin142", href: site.linkedin, external: true },
+  ...projects.map((p) => ({ label: p.name, hint: "project", href: `#${p.id}` })),
+  { label: "Experience", hint: "section", href: "#experience" },
+  { label: "Contact", hint: "section", href: "#contact" },
+];
 
 const nameLetters = ["N", "i", "t", "h", "i", "n", "\u00a0", "K"];
 
@@ -18,6 +30,7 @@ export default function Page() {
             <a href="#work">Work</a>
             <a href="#experience">Experience</a>
             <a href="#contact">Contact</a>
+            <CommandPalette items={paletteItems} />
           </nav>
         </div>
 
@@ -51,6 +64,11 @@ export default function Page() {
 
           <p className="statement">
             I build the backend that has to keep working. <span>Payments, order updates, notifications.</span>
+          </p>
+          <p className="about-line">
+            Two years at C S Tech Infosolutions, mostly on payment and shipping integrations, a push notification
+            system, and keeping live systems running. I&rsquo;d rather script a fix than click through it. Right now
+            I&rsquo;m learning Go by building an e-commerce backend on the standard library.
           </p>
         </header>
 
@@ -111,17 +129,13 @@ export default function Page() {
                     <dd>{t.items}</dd>
                   </div>
                 ))}
-                <div>
-                  <dt>Right now</dt>
-                  <dd>Building an e-commerce backend in Go from scratch, standard library first.</dd>
-                </div>
               </dl>
             </div>
           </section>
 
           <section className="contact sec" id="contact">
             <h2>Contact</h2>
-            <p>The best way to reach me is email. Bangalore, open to relocating.</p>
+            <p>If you&rsquo;re hiring for backend or full-stack work, email me. Bangalore, open to relocating.</p>
             <p>
               <a className="plain-link" href={`mailto:${site.email}`}>
                 {site.email}
