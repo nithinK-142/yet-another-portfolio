@@ -23,19 +23,22 @@ export default function Page() {
         Skip to content
       </a>
 
-      {/* Every screen is sized to the viewport height, so nothing is cut off at the fold. */}
+      {/* Sticky bar: stays visible on every screen. */}
+      <div className="topbar">
+        <div className="wrap top">
+          <a href="#top">{site.name}</a>
+          <nav aria-label="Primary">
+            <a href="#work">Work</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
+            <CommandPalette items={paletteItems} />
+          </nav>
+        </div>
+      </div>
+
+      {/* Every screen fills the space below the bar, so nothing is cut off at the fold. */}
       <div className="screen screen-hero">
         <div className="wrap">
-          <div className="top">
-            <a href="#top">{site.name}</a>
-            <nav aria-label="Primary">
-              <a href="#work">Work</a>
-              <a href="#experience">Experience</a>
-              <a href="#contact">Contact</a>
-              <CommandPalette items={paletteItems} />
-            </nav>
-          </div>
-
           <header id="top" className="hero">
             <h1>I build the backend that has to keep working.</h1>
             <p>

@@ -13,6 +13,8 @@
   --inv-bg: #0c0c0c;
   --inv-ink: #ffffff;
   --grid: rgba(12, 12, 12, 0.13);
+  --bar: 4rem;
+  --avail: calc(100svh - var(--bar));
   color-scheme: light dark;
 }
 
@@ -29,6 +31,7 @@
 }
 
 html {
+  scroll-padding-top: var(--bar);
   background: var(--bg);
   -webkit-text-size-adjust: 100%;
 }
@@ -85,11 +88,21 @@ a {
 }
 
 /* ---------- Header ---------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: color-mix(in srgb, var(--bg) 96%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 0 var(--rule);
+}
+
 .top {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  padding-block: 1.3rem;
+  align-items: center;
+  height: var(--bar);
   font-weight: 600;
 }
 
@@ -158,12 +171,12 @@ a {
   }
 
   .screen {
-    min-height: 100svh;
+    min-height: var(--avail);
     display: flex;
     flex-direction: column;
     justify-content: center;
     scroll-snap-align: start;
-    padding-block: clamp(1.5rem, 5svh, 4rem);
+    padding-block: clamp(1.5rem, calc(var(--avail) * 0.05), 4rem);
   }
 
   .screen > .wrap {
@@ -190,7 +203,7 @@ a {
 
 @media (min-width: 48rem) {
   #contact.screen {
-    min-height: calc(100svh - 5rem);
+    min-height: calc(var(--avail) - 5rem);
   }
 }
 
@@ -205,13 +218,13 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-block: clamp(1rem, 4svh, 3rem) clamp(2rem, 7svh, 4.5rem);
+    padding-block: clamp(1rem, calc(var(--avail) * 0.04), 3rem) clamp(2rem, calc(var(--avail) * 0.07), 4.5rem);
   }
 }
 
 .hero h1 {
   margin: 0;
-  font-size: clamp(2.6rem, min(7.6vw, 12.5svh), 7.2rem);
+  font-size: clamp(2.6rem, min(7.6vw, calc(var(--avail) * 0.125)), 7.2rem);
   font-weight: 700;
   letter-spacing: -0.05em;
   line-height: 0.98;
@@ -220,9 +233,9 @@ a {
 }
 
 .hero p {
-  margin: clamp(1.1rem, 3svh, 2.2rem) 0 0;
+  margin: clamp(1.1rem, calc(var(--avail) * 0.03), 2.2rem) 0 0;
   max-width: 34rem;
-  font-size: clamp(1.1rem, min(1.7vw, 3.1svh), 1.4rem);
+  font-size: clamp(1.1rem, min(1.7vw, calc(var(--avail) * 0.031)), 1.4rem);
   line-height: 1.45;
 }
 
@@ -235,7 +248,7 @@ a {
   flex-wrap: wrap;
   align-items: center;
   gap: 0.9rem 1.8rem;
-  margin-top: clamp(1.2rem, 3.4svh, 2.4rem);
+  margin-top: clamp(1.2rem, calc(var(--avail) * 0.034), 2.4rem);
   font-weight: 600;
 }
 
@@ -286,7 +299,7 @@ a {
 }
 
 .blk h2 {
-  margin: 0 0 clamp(0.8rem, 2.2svh, 1.5rem);
+  margin: 0 0 clamp(0.8rem, calc(var(--avail) * 0.022), 1.5rem);
   font-size: 1.05rem;
   font-weight: 600;
 }
@@ -300,7 +313,7 @@ section[id],
 .proj {
   display: grid;
   gap: 0.9rem 3rem;
-  padding-block: clamp(0.7rem, 2.2svh, 1.5rem);
+  padding-block: clamp(0.7rem, calc(var(--avail) * 0.022), 1.5rem);
   border-top: 1px solid var(--rule);
 }
 
@@ -318,14 +331,14 @@ section[id],
   font-weight: 700;
   letter-spacing: -0.045em;
   line-height: 1;
-  font-size: clamp(1.7rem, min(4.2vw, 6svh), 3.6rem);
+  font-size: clamp(1.7rem, min(4.2vw, calc(var(--avail) * 0.06)), 3.6rem);
   text-wrap: balance;
 }
 
 .pmeta .lead {
   margin: 0.5rem 0 0;
   font-weight: 600;
-  font-size: clamp(1rem, 2.4svh, 1.2rem);
+  font-size: clamp(1rem, calc(var(--avail) * 0.024), 1.2rem);
 }
 
 .pmeta .stack {
@@ -347,11 +360,11 @@ section[id],
 }
 
 .facts li {
-  padding-block: clamp(0.3rem, 1svh, 0.65rem);
+  padding-block: clamp(0.3rem, calc(var(--avail) * 0.01), 0.65rem);
   border-top: 1px solid var(--rule);
   font-weight: 500;
   letter-spacing: -0.015em;
-  font-size: clamp(1rem, min(2vw, 2.6svh), 1.55rem);
+  font-size: clamp(1rem, min(2vw, calc(var(--avail) * 0.026)), 1.55rem);
   line-height: 1.25;
 }
 
@@ -372,7 +385,7 @@ section[id],
 
 .role {
   margin: 0;
-  font-size: clamp(1.6rem, min(3vw, 5svh), 2.4rem);
+  font-size: clamp(1.6rem, min(3vw, calc(var(--avail) * 0.05)), 2.4rem);
   font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1.1;
@@ -385,7 +398,7 @@ section[id],
 }
 
 .small {
-  margin: 0.2rem 0 clamp(1rem, 3svh, 1.8rem);
+  margin: 0.2rem 0 clamp(1rem, calc(var(--avail) * 0.03), 1.8rem);
   color: var(--mute);
   font-size: 0.95rem;
 }
@@ -397,7 +410,7 @@ section[id],
 .tl > div {
   display: grid;
   gap: 0.15rem 1.5rem;
-  padding-block: clamp(0.45rem, 1.5svh, 0.85rem);
+  padding-block: clamp(0.45rem, calc(var(--avail) * 0.015), 0.85rem);
   border-top: 1px solid var(--rule);
 }
 
@@ -421,7 +434,7 @@ section[id],
 
 .ask {
   margin: 0;
-  font-size: clamp(1.4rem, min(2.6vw, 4.4svh), 2rem);
+  font-size: clamp(1.4rem, min(2.6vw, calc(var(--avail) * 0.044)), 2rem);
   font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.2;
@@ -432,6 +445,18 @@ section[id],
 .ask-sub {
   margin: 0.6rem 0 1.2rem;
   color: var(--mute);
+}
+
+/* Short laptop screens: tighten so each screen still fits */
+@media (min-width: 48rem) and (max-height: 40rem) {
+  .screen { padding-block: 0.75rem; }
+  .proj { padding-block: 0.5rem; }
+  .pname { font-size: 1.6rem; }
+  .facts li { padding-block: 0.22rem; font-size: 1rem; }
+  .pmeta .lead { margin-top: 0.3rem; font-size: 1rem; }
+  .role { font-size: 1.6rem; }
+  .tl > div { padding-block: 0.32rem; }
+  .blk h2 { margin-bottom: 0.6rem; }
 }
 
 /* ---------- Footer ---------- */
