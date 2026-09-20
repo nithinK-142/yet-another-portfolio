@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
-export const alt = "Backend developer for payments, webhooks and notification systems.";
+export const alt = "I take backend systems from unfinished to production, and keep them running.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -30,14 +30,14 @@ export default async function OpengraphImage() {
         <div style={{ fontSize: 30, fontWeight: 400, color: "#66686b" }}>Available now</div>
         <div
           style={{
-            fontSize: 92,
+            fontSize: 84,
             fontWeight: 800,
             lineHeight: 0.98,
             letterSpacing: "-0.055em",
             maxWidth: 1020,
           }}
         >
-          Backend developer for payments, webhooks and notification systems.
+          I take backend systems from unfinished to production, and keep them running.
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 30, color: "#66686b", fontWeight: 400 }}>
           <span>Bangalore, open to relocating</span>

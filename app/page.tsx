@@ -43,10 +43,10 @@ export default function Page() {
             <div className="hero-grid">
               <div>
                 <h1>
-                  Backend developer for <span className="u">payments</span>, <span className="u">webhooks</span> and{" "}
-                  <span className="u">notification systems</span>.
+                  I take backend systems from <span className="u">unfinished to production</span>, and keep them
+                  running.
                 </h1>
-                <p>Commerce and operations software for clients, from a B2B marketplace to a warehouse system.</p>
+                <p>Two years of client work across e-commerce, warehouse operations and messaging.</p>
                 <div className="acts">
                   <a className="button" href={`mailto:${site.email}`}>
                     Email me
@@ -133,7 +133,7 @@ export default function Page() {
           <div className="wrap profile">
             <div className="blk">
               <h2 id="contact-h">Contact</h2>
-              <p className="ask">Payments, webhooks or notifications giving you trouble? Email me.</p>
+              <p className="ask">Building or fixing a backend? Email me.</p>
               <p className="ask-sub">Hiring for a backend or full-stack role? Same address.</p>
               <p>
                 <a className="plain-link" href={`mailto:${site.email}`}>

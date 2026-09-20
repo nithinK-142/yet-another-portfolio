@@ -5,9 +5,9 @@ export const site = {
   github: "https://github.com/nithinK-142",
   linkedin: "https://www.linkedin.com/in/nithin142/",
   resume: "/nithin-public-resume.pdf",
-  title: "Nithin K, backend developer for payments, webhooks and notifications",
+  title: "Nithin K, backend developer (Node.js, Go)",
   description:
-    "Backend developer in Bangalore for payments, webhooks and notification systems. Two years in production on commerce and operations software. Available now, open to relocating.",
+    "Backend developer in Bangalore. Two years taking client systems from unfinished to production across e-commerce, warehouse operations and messaging. Available now, open to relocating.",
 };
 
 export const projects = [
