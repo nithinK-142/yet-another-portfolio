@@ -331,8 +331,8 @@ a {
 }
 
 section[id],
-[id="stack"] {
-  scroll-margin-top: 0;
+article[id] {
+  scroll-margin-top: var(--bar);
 }
 
 /* ---------- Work ---------- */
