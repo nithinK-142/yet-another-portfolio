@@ -66,24 +66,72 @@ a {
   color: inherit;
 }
 
-/* ---------- Background mesh ---------- */
-/* One fixed grid behind every screen, so the background is the same everywhere. */
-.bg-mesh {
+/* ---------- Background: live cursor light ---------- */
+.cursor-light {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   pointer-events: none;
-  background-image:
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 44px 44px;
-  background-position: -1px -1px;
-  -webkit-mask-image: radial-gradient(ellipse 150% 130% at 50% 45%, #000 45%, transparent 100%);
-  mask-image: radial-gradient(ellipse 150% 130% at 50% 45%, #000 45%, transparent 100%);
+  overflow: hidden;
 }
 
-@media (min-width: 48rem) {
-  .bg-mesh { background-size: 56px 56px; }
+.cursor-light__glow,
+.cursor-light__halo {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  border-radius: 999px;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.cursor-light__glow {
+  width: min(44rem, 58vw);
+  height: min(44rem, 58vw);
+  background: radial-gradient(circle, rgba(120, 150, 255, 0.13) 0%, rgba(120, 150, 255, 0.07) 26%, rgba(120, 150, 255, 0.025) 52%, transparent 72%);
+  filter: blur(10px);
+  mix-blend-mode: screen;
+}
+
+.cursor-light__halo {
+  width: min(20rem, 30vw);
+  height: min(20rem, 30vw);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.035) 34%, transparent 70%);
+  filter: blur(6px);
+  mix-blend-mode: screen;
+}
+
+main,
+.screen-hero,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-color-scheme: light) {
+  .cursor-light__glow {
+    background: radial-gradient(circle, rgba(40, 55, 90, 0.09) 0%, rgba(40, 55, 90, 0.045) 28%, rgba(40, 55, 90, 0.018) 52%, transparent 72%);
+    mix-blend-mode: multiply;
+  }
+
+  .cursor-light__halo {
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.018) 34%, transparent 70%);
+    mix-blend-mode: multiply;
+  }
+}
+
+@media (max-width: 47.999rem), (prefers-reduced-motion: reduce) {
+  .cursor-light__glow {
+    width: 32rem;
+    height: 32rem;
+  }
+
+  .cursor-light__halo {
+    width: 14rem;
+    height: 14rem;
+  }
 }
 
 /* ---------- Header ---------- */

@@ -1,4 +1,5 @@
 import { CommandPalette, type PaletteItem } from "@/components/CommandPalette";
+import { CursorLight } from "@/components/CursorLight";
 import { ExternalLink } from "@/components/Links";
 import { experience, projects, site, tools } from "@/content/site";
 
@@ -17,7 +18,7 @@ const paletteItems: PaletteItem[] = [
 export default function Page() {
   return (
     <>
-      <div className="bg-mesh" aria-hidden="true" />
+      <CursorLight />
 
       <a href="#main" className="skip-link">
         Skip to content
