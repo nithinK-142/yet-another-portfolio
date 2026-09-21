@@ -518,15 +518,13 @@ footer {
   background: #f1b765;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .hero {
-    animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.1, 1) both;
-  }
+.hero {
+  animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.1, 1) both;
+}
 
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(14px); }
-    to { opacity: 1; transform: none; }
-  }
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
 }
 
 /* ---------- Icons and links with icons ---------- */
@@ -765,15 +763,13 @@ footer {
   background: var(--accent);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .dot {
-    animation: avail-ping 2.6s ease-out infinite;
-  }
+.dot {
+  animation: avail-ping 2.6s ease-out infinite;
+}
 
-  @keyframes avail-ping {
-    0% { box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0.55); }
-    70%, 100% { box-shadow: 0 0 0 0.6rem rgba(var(--accent-rgb), 0); }
-  }
+@keyframes avail-ping {
+  0% { box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0.55); }
+  70%, 100% { box-shadow: 0 0 0 0.6rem rgba(var(--accent-rgb), 0); }
 }
 
 [data-motion="reduce"] .dot {
@@ -979,9 +975,7 @@ footer.site-footer .wrap {
   transform: translate(-50%, 0);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .toast { transition: opacity 0.15s, transform 0.15s; }
-}
+.toast { transition: opacity 0.15s, transform 0.15s; }
 
 /* ---------- Print ---------- */
 @media print {

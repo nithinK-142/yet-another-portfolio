@@ -52,7 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <script
           dangerouslySetInnerHTML={{
-            __html: `try { var d = document.documentElement; d.dataset.motion = window.localStorage.getItem("nithin-motion-enabled") === "false" ? "reduce" : "on"; var t = window.localStorage.getItem("nithin-theme"); if (t === "light" || t === "dark") d.dataset.theme = t; } catch { document.documentElement.dataset.motion = "on"; }`,
+            __html: `try { var d = document.documentElement; var m = window.localStorage.getItem("nithin-motion-enabled"); d.dataset.motion = m === "true" ? "on" : m === "false" ? "reduce" : (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "reduce" : "on"); var t = window.localStorage.getItem("nithin-theme"); if (t === "light" || t === "dark") d.dataset.theme = t; } catch { d.dataset.motion = "on"; }`,
           }}
         />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
