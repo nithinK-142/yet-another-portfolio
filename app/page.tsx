@@ -37,11 +37,12 @@ export default function Page() {
             <a href="#experience">Experience</a>
             <a href="#work">Work</a>
             <a href="#contact">Contact</a>
-            <MotionToggle />
             <CommandPalette items={paletteItems} />
           </nav>
         </div>
       </div>
+
+      <MotionToggle />
 
       {/* The hero fills the first screen below the bar, so nothing is cut off at the fold. */}
       <div className="screen-hero">

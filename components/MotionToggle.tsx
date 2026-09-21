@@ -34,13 +34,12 @@ export function MotionToggle() {
       aria-pressed={enabled}
       aria-label={enabled ? "Animations enabled" : "Animations reduced"}
       title={enabled ? "Animations on. Click to reduce motion." : "Animations reduced. Click to enable motion."}
+      data-tooltip={enabled ? "Motion on · click to reduce" : "Motion reduced · click to enable"}
       onClick={toggle}
     >
-      <span className="motion-toggle__label">Motion</span>
       <span className={enabled ? "motion-toggle__switch is-on" : "motion-toggle__switch"} aria-hidden="true">
         <span className="motion-toggle__thumb" />
       </span>
-      <span className="motion-toggle__state">{enabled ? "On" : "Off"}</span>
     </button>
   );
 }
