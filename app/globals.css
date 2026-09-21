@@ -59,6 +59,40 @@ html {
   scroll-padding-top: var(--bar);
   background: var(--bg);
   -webkit-text-size-adjust: 100%;
+  scrollbar-color: rgba(var(--accent-rgb), 0.62) transparent;
+  scrollbar-width: thin;
+}
+
+/* ---------- Sleek accent scrollbar ---------- */
+* {
+  scrollbar-color: rgba(var(--accent-rgb), 0.62) transparent;
+  scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  min-height: 2.5rem;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: rgba(var(--accent-rgb), 0.62);
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 body {
