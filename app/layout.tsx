@@ -50,6 +50,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={schibsted.variable}>
       <body>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try { document.documentElement.dataset.motion = window.localStorage.getItem("nithin-motion-enabled") === "false" ? "reduce" : "on"; } catch { document.documentElement.dataset.motion = "on"; }`,
+          }}
+        />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
         {children}
       </body>

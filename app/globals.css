@@ -122,7 +122,7 @@ footer {
   }
 }
 
-@media (max-width: 47.999rem), (prefers-reduced-motion: reduce) {
+@media (max-width: 47.999rem) {
   .cursor-light__glow {
     width: 32rem;
     height: 32rem;
@@ -132,6 +132,12 @@ footer {
     width: 14rem;
     height: 14rem;
   }
+}
+
+[data-motion="reduce"] .hero,
+[data-motion="reduce"] .toast {
+  animation: none !important;
+  transition: none !important;
 }
 
 /* ---------- Header ---------- */
@@ -176,10 +182,66 @@ footer {
   border-color: var(--ink);
 }
 
+.motion-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.16rem 0.35rem 0.16rem 0.45rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--mute);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.motion-toggle:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.motion-toggle__switch {
+  position: relative;
+  width: 1.8rem;
+  height: 1rem;
+  border-radius: 999px;
+  background: var(--rule);
+  flex: 0 0 auto;
+}
+
+.motion-toggle__thumb {
+  position: absolute;
+  top: 0.15rem;
+  left: 0.15rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 999px;
+  background: var(--ink);
+  transition: transform 0.18s ease;
+}
+
+.motion-toggle__switch.is-on .motion-toggle__thumb {
+  transform: translateX(0.8rem);
+}
+
+.motion-toggle__state {
+  min-width: 1.55rem;
+  text-align: left;
+}
+
+[data-motion="reduce"] .motion-toggle__thumb {
+  transition: none;
+}
+
 @media (max-width: 40rem) {
   .kbd { display: none; }
+  .motion-toggle__label,
+  .motion-toggle__state { display: none; }
+  .motion-toggle { padding: 0.3rem; }
   .top { font-size: 1rem; }
-  .top nav { gap: 1rem; }
+  .top nav { gap: 0.7rem; }
 }
 
 .top a {

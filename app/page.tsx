@@ -1,5 +1,6 @@
 import { CommandPalette, type PaletteItem } from "@/components/CommandPalette";
 import { CursorLight } from "@/components/CursorLight";
+import { MotionToggle } from "@/components/MotionToggle";
 import { ExternalLink } from "@/components/Links";
 import { experience, projects, site, tools } from "@/content/site";
 
@@ -36,6 +37,7 @@ export default function Page() {
             <a href="#experience">Experience</a>
             <a href="#work">Work</a>
             <a href="#contact">Contact</a>
+            <MotionToggle />
             <CommandPalette items={paletteItems} />
           </nav>
         </div>
