@@ -42,8 +42,6 @@ export default function Page() {
         </div>
       </div>
 
-      <MotionToggle />
-
       {/* The hero fills the first screen below the bar, so nothing is cut off at the fold. */}
       <div className="screen-hero">
         <div className="wrap">
@@ -191,7 +189,10 @@ export default function Page() {
       <footer className="site-footer">
         <div className="wrap">
           <span>Less talk. More git push.</span>
-          <span>&copy; {new Date().getFullYear()}</span>
+          <div className="footer-right">
+            <MotionToggle />
+            <span>&copy; {new Date().getFullYear()}</span>
+          </div>
         </div>
       </footer>
     </>
