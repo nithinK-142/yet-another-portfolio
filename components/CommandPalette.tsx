@@ -17,6 +17,7 @@ export type PaletteItem = {
 export function CommandPalette({ items }: { items: PaletteItem[] }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
   const [status, setStatus] = useState("");
@@ -59,6 +60,12 @@ export function CommandPalette({ items }: { items: PaletteItem[] }) {
     if (item.external) window.open(item.href, "_blank", "noopener,noreferrer");
     else window.location.href = item.href;
   }
+
+  useEffect(() => {
+    if (!shown.length) return;
+    const row = listRef.current?.querySelector<HTMLElement>(`#${CSS.escape(`${listId}-${active}`)}`);
+    row?.scrollIntoView({ block: "nearest" });
+  }, [active, listId, shown.length]);
 
   useEffect(() => {
     if (!toast) return;
@@ -128,7 +135,7 @@ export function CommandPalette({ items }: { items: PaletteItem[] }) {
           onKeyDown={onInputKey}
         />
         {shown.length > 0 ? (
-          <div id={listId} role="listbox" aria-label="Results" className="pal-list">
+          <div ref={listRef} id={listId} role="listbox" aria-label="Results" className="pal-list">
             {shown.map((item, i) => {
               const common = {
                 id: `${listId}-${i}`,
