@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useId, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { Icon, type IconName } from "@/components/Icon";
+import { copyText } from "@/lib/copy";
 
 export type PaletteItem = {
   label: string;
@@ -8,29 +10,8 @@ export type PaletteItem = {
   href?: string;
   copy?: string;
   external?: boolean;
+  icon?: IconName;
 };
-
-async function copyText(text: string): Promise<boolean> {
-  try {
-    await navigator.clipboard.writeText(text);
-    return true;
-  } catch {
-    try {
-      const t = document.createElement("textarea");
-      t.value = text;
-      t.setAttribute("readonly", "");
-      t.style.position = "fixed";
-      t.style.opacity = "0";
-      document.body.appendChild(t);
-      t.select();
-      const ok = document.execCommand("copy");
-      document.body.removeChild(t);
-      return ok;
-    } catch {
-      return false;
-    }
-  }
-}
 
 /** Ctrl/Cmd+K (or "/") opens a keyboard-driven list of links and jumps. */
 export function CommandPalette({ items }: { items: PaletteItem[] }) {
@@ -159,7 +140,10 @@ export function CommandPalette({ items }: { items: PaletteItem[] }) {
               };
               const body = (
                 <>
-                  <span>{item.label}</span>
+                  <span className="pal-l">
+                    {item.icon && <Icon name={item.icon} size={16} />}
+                    {item.label}
+                  </span>
                   <small>{item.hint}</small>
                 </>
               );
