@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 const STORAGE_KEY = "nithin-motion-enabled";
 const EVENT_NAME = "motion-preference-change";
@@ -10,20 +10,26 @@ function applyMotionPreference(enabled: boolean) {
   window.dispatchEvent(new CustomEvent<boolean>(EVENT_NAME, { detail: enabled }));
 }
 
-export function MotionToggle() {
-  const [enabled, setEnabled] = useState(true);
+function subscribe(onChange: () => void) {
+  window.addEventListener(EVENT_NAME, onChange);
+  return () => window.removeEventListener(EVENT_NAME, onChange);
+}
 
-  useEffect(() => {
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    const nextEnabled = stored === null ? true : stored !== "false";
-    setEnabled(nextEnabled);
-    applyMotionPreference(nextEnabled);
-  }, []);
+/** The initial value comes from the inline script in layout.tsx, which sets data-motion before first paint. */
+export function MotionToggle() {
+  const enabled = useSyncExternalStore(
+    subscribe,
+    () => document.documentElement.dataset.motion !== "reduce",
+    () => true,
+  );
 
   function toggle() {
     const nextEnabled = !enabled;
-    setEnabled(nextEnabled);
-    window.localStorage.setItem(STORAGE_KEY, String(nextEnabled));
+    try {
+      window.localStorage.setItem(STORAGE_KEY, String(nextEnabled));
+    } catch {
+      /* storage unavailable: the choice still applies for this visit */
+    }
     applyMotionPreference(nextEnabled);
   }
 
