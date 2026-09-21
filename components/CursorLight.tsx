@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 
 const INITIAL_X = 0.5;
 const INITIAL_Y = 0.25;
+const MOTION_EVENT = "motion-preference-change";
 
 /**
  * Live ambient light that tracks the pointer on fine-pointer devices.
@@ -113,7 +114,7 @@ export function CursorLight() {
     window.addEventListener("pointerleave", onPointerLeave);
     window.addEventListener("pointerenter", onPointerEnter);
     window.addEventListener("resize", onViewportResize, { passive: true });
-    window.addEventListener(EVENT_NAME, onMotionPreferenceChange);
+    window.addEventListener(MOTION_EVENT, onMotionPreferenceChange);
 
     syncMotion(motionEnabled);
 
@@ -122,7 +123,7 @@ export function CursorLight() {
       window.removeEventListener("pointerleave", onPointerLeave);
       window.removeEventListener("pointerenter", onPointerEnter);
       window.removeEventListener("resize", onViewportResize);
-      window.removeEventListener(EVENT_NAME, onMotionPreferenceChange);
+      window.removeEventListener(MOTION_EVENT, onMotionPreferenceChange);
       stopAnimation();
     };
   }, []);
