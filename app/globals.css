@@ -319,7 +319,7 @@ footer {
   border-radius: 3px;
 }
 
-.top nav a:hover {
+.top nav > a:hover {
   color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 0.25em;
