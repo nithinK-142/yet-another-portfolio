@@ -60,18 +60,18 @@ html {
   background: var(--bg);
   -webkit-text-size-adjust: 100%;
   scrollbar-color: rgba(var(--accent-rgb), 0.62) transparent;
-  scrollbar-width: thin;
+  scrollbar-width: auto;
 }
 
 /* ---------- Sleek accent scrollbar ---------- */
 * {
   scrollbar-color: rgba(var(--accent-rgb), 0.62) transparent;
-  scrollbar-width: thin;
+  scrollbar-width: auto;
 }
 
 *::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 12px;
+  height: 12px;
 }
 
 *::-webkit-scrollbar-track {
@@ -80,8 +80,8 @@ html {
 
 *::-webkit-scrollbar-thumb {
   min-height: 2.5rem;
-  border: 2px solid transparent;
-  border-radius: 999px;
+  border: 0;
+  border-radius: 0;
   background: rgba(var(--accent-rgb), 0.62);
   background-clip: padding-box;
 }
