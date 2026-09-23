@@ -181,7 +181,7 @@ export default function Page() {
         <section className="sec" aria-labelledby="work-h">
           <div className="wrap">
             <div className="blk" id="work">
-              <h2 id="work-h">Work</h2>
+              <h2 id="work-h">Selected Work</h2>
               {projects.map((p, index) => (
                 <article className="proj pair" id={p.id} key={p.id}>
                   <div className="project-intro">

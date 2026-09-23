@@ -16,33 +16,33 @@ export const projects = [
     name: "Dealsdray",
     stack: "React, Express, MongoDB, Flutter",
     context:
-      "Dealsdray is the commerce side of the business: a mobile app for customers plus internal panels for team members, selling new and refurbished electronics and mobiles.",
+      "Commerce app for customers and internal panels. Sells new and refurbished electronics and mobiles.",
     did:
-      "Built and shipped major parts of the app and internal panels. Integrated Razorpay, PayTM, Zoop and Shiprocket, including webhooks for payment and shipment updates. Built the migration pipeline for 70K+ legacy users and orders, then separated API, cron, notification and payment workloads into independent services.",
+      "Built major features, integrated Razorpay, PayTM, Zoop and Shiprocket, migrated 70K+ legacy users and orders, and split API, cron, notification and payment workloads.",
     result:
-      "The platform serves 30K+ daily users and 2K+ monthly orders. The service split gave API, cron, notification and payment workloads separate release boundaries.",
+      "30K+ daily users and 2K+ monthly orders.",
   },
   {
     id: "notification-console",
     name: "Notification Console",
     stack: "React, Express, MongoDB, Go",
     context:
-      "Notification Console is the internal notification tool for the Dealsdray mobile app. A large campaign could take about 15 minutes to finish, so delivery had to process large token sets without making every campaign wait on serial batch work.",
+      "Internal notification tool for the Dealsdray mobile app. Campaigns could take about 15 minutes to finish.",
     did:
-      "Built the console around priority-ordered campaigns, concurrent batch delivery and crash recovery. The worker processes device-token batches and keeps enough state to resume after a process failure.",
+      "Added priority ordering, concurrent batch delivery and crash recovery for device-token campaigns.",
     result:
-      "Campaign runs now finish in under a minute. The system has handled 80K+ device tokens and 10K+ campaigns.",
+      "Campaigns now finish in under a minute. 80K+ device tokens and 10K+ campaigns handled.",
   },
   {
     id: "rekrafted",
     name: "Rekrafted",
     stack: "Next.js, Express, MongoDB",
     context:
-      "Rekrafted is the refurbished-only counterpart to Dealsdray. It follows the same commerce model but sells only refurbished mobiles. The API server also held a 10–15GB media library.",
+      "Refurbished-only counterpart to Dealsdray, selling refurbished mobiles.",
     did:
-      "Built product grading so listings and pricing could vary by device condition. Wrote a migration utility that moves existing product and color images to ImageKit, updates their URLs and thumbnails, and skips files already migrated.",
+      "Added grade-based listings and pricing. Moved the 10–15GB image library to ImageKit with a rerunnable migration utility.",
     result:
-      "Grade-specific listings cover 70% of inventory and orders increased 15%. The 10–15GB media library was moved off the API server.",
+      "70% of inventory covered by grading; orders increased 15%.",
     link: { href: "https://rekrafted.in/", label: "rekrafted.in" },
   },
   {
@@ -50,11 +50,11 @@ export const projects = [
     name: "Prexo",
     stack: "React, Express, MongoDB",
     context:
-      "Prexo starts after electronics ordered from marketplaces such as Amazon and Flipkart are delivered. The devices then move through bagging, segregation, BQC, audit, RDL1 and RDL2 before reaching sales through Dealsdray. Its scheduled Windows Server jobs were failing on roughly 50% of runs.",
+      "After Amazon/Flipkart deliveries: bagging → segregation → BQC → audit → RDL1 → RDL2 → sales through Dealsdray.",
     did:
-      "Moved the cron runner into an NSSM-managed Windows service. Also built a recovery utility that brings unsellable units back into the import process as fresh inventory.",
+      "Moved the cron runner behind NSSM and built a recovery utility for unsellable units.",
     result:
-      "Scheduled job failures dropped from 50% of runs to 0%, and inventory recovery increased by 30%.",
+      "Cron failures: 50% → 0%. Inventory recovery: +30%.",
   },
 ];
 
@@ -84,7 +84,6 @@ export const experience = {
     },
   ],
 };
-
 
 export const tools = [
   { group: "Languages", items: "JavaScript, TypeScript, Go" },
