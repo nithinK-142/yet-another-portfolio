@@ -50,7 +50,7 @@ export const projects = [
     name: "Prexo",
     stack: "React, Express, MongoDB",
     context:
-      "Prexo covers the warehouse side of the process, from procuring incoming electronics through processing them and preparing them for sale on Dealsdray. Its scheduled Windows Server jobs were failing on roughly 50% of runs.",
+      "Prexo covers the warehouse side of the process, from buying raw electronics through processing them and preparing them for sale on Dealsdray. Its scheduled Windows Server jobs were failing on roughly 50% of runs.",
     did:
       "Moved the cron runner into an NSSM-managed Windows service. Also built a recovery utility that brings unsellable units back into the import process as fresh inventory.",
     result:
