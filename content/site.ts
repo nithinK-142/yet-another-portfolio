@@ -53,31 +53,31 @@ export const experience = {
   place: "Bangalore",
   when: "September 2024 to May 2026",
   summary:
-    "Turning business workflows into production software: application development, third-party integrations, releases, troubleshooting and system reliability.",
+    "Two years across the Dealsdray commerce app and internal panels, the Prexo warehouse operation, Rekrafted refurbished-mobile sales, and the notification console for Dealsdray.",
   rows: [
     {
       label: "Scope",
-      text: "Four production applications spanning B2B commerce, warehouse operations, refurbished-device retail and notification delivery.",
+      text: "Worked across the Dealsdray customer app and internal panels, Prexo warehouse processing, Rekrafted refurbished-mobile sales, and the notification console for the Dealsdray app.",
     },
     {
       label: "Ownership",
-      text: "Built, shipped and stabilized major parts of the Dealsdray platform, taking it from an unfinished state to production.",
+      text: "Built, shipped and stabilized major parts of Dealsdray, including core features, integrations, background jobs and live fixes.",
     },
     {
-      label: "Clients",
-      text: "Worked directly with clients to understand their operational requirements and turn them into application changes.",
+      label: "Client work",
+      text: "Worked directly with clients on operational requirements, then turned those requirements into concrete application changes.",
     },
     {
       label: "Integrations",
-      text: "Connected payment and shipping providers, building webhook flows for payment confirmation and shipment status updates.",
+      text: "Integrated Razorpay, PayTM, Zoop and Shiprocket, including webhooks for payment confirmation and shipment status updates.",
     },
     {
       label: "Architecture",
-      text: "Decomposed the Dealsdray monolith into API, cron, notification and payment microservices, so workloads scale and release independently.",
+      text: "Split the Dealsdray monolith into API, cron, notification and payment services so those workloads no longer share the same release boundary.",
     },
     {
-      label: "Live systems",
-      text: "Handled production: server setup, outage resolution, urgent fixes, deployments, debugging and data corrections.",
+      label: "Operations",
+      text: "Handled server setup, deployments, outage fixes, debugging and data corrections alongside normal feature work.",
     },
   ],
 };
