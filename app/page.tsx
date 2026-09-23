@@ -141,7 +141,7 @@ export default function Page() {
               <div className="stack-intro">
                 <div>
                   <h2 id="stack-h">Stack</h2>
-                  <p>Built around backend systems, from the API layer down to infrastructure and observability.</p>
+                  <p>Most of my work is backend: APIs, jobs, data stores, integrations and deployment tooling.</p>
                 </div>
                 <div className="stack-flow" aria-label="How the stack fits together">
                   <span>Build</span>
