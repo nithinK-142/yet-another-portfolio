@@ -64,34 +64,27 @@ export const experience = {
   place: "Bangalore",
   when: "September 2024 to May 2026",
   summary:
-    "Two years working on the Dealsdray commerce app and internal panels, the Prexo warehouse operation, Rekrafted refurbished-mobile sales, and the notification console for Dealsdray.",
+    "Worked on Dealsdray, Prexo, Rekrafted, and the notification console for the Dealsdray app.",
   rows: [
     {
-      label: "Scope",
-      text: "Worked on the Dealsdray customer app and internal panels, Prexo warehouse processing, Rekrafted refurbished-mobile sales, and the notification console for the Dealsdray app.",
-    },
-    {
       label: "Ownership",
-      text: "Built, shipped and stabilized major parts of Dealsdray, including core features, integrations, background jobs and live fixes.",
-    },
-    {
-      label: "Client work",
-      text: "Worked directly with clients on operational requirements, then turned those requirements into concrete application changes.",
+      text: "Built and shipped major Dealsdray features, integrations, jobs and fixes.",
     },
     {
       label: "Integrations",
-      text: "Integrated Razorpay, PayTM, Zoop and Shiprocket, including webhooks for payment confirmation and shipment status updates.",
+      text: "Razorpay, PayTM, Zoop and Shiprocket, including payment and shipment webhooks.",
     },
     {
       label: "Architecture",
-      text: "Split the Dealsdray monolith into API, cron, notification and payment services so those workloads no longer share the same release boundary.",
+      text: "Split API, cron, notification and payment workloads into separate services.",
     },
     {
       label: "Operations",
-      text: "Handled server setup, deployments, outage fixes, debugging and data corrections alongside normal feature work.",
+      text: "Server setup, deployments, outage fixes, debugging and data corrections.",
     },
   ],
 };
+
 
 export const tools = [
   { group: "Languages", items: "JavaScript, TypeScript, Go" },
