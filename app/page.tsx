@@ -225,8 +225,8 @@ export default function Page() {
             <div className="blk pair" id="contact">
               <div>
                 <h2 id="contact-h">Contact</h2>
-                <p className="ask">Building or fixing a backend? Email me.</p>
-                <p className="ask-sub">Hiring for a backend or full-stack role? Same address.</p>
+                <p className="ask">Have a backend feature, integration, or reliability problem to discuss? Email me.</p>
+                <p className="ask-sub">Hiring for backend or full-stack work? Same address.</p>
                 <CopyEmail email={site.email} />
               </div>
               <dl className="tl">
