@@ -7,7 +7,7 @@ export const site = {
   resume: "/nithin-public-resume.pdf",
   title: "Nithin K, backend developer (Node.js, Go)",
   description:
-    "Backend developer in Bangalore. Two years working across commerce, warehouse processing, refurbished mobile sales and notifications for the Dealsdray app. Available now, open to relocating.",
+    "Backend developer in Bangalore. Two years working on commerce, warehouse processing, refurbished mobile sales and the notification tool for the Dealsdray app. Available now, open to relocating.",
 };
 
 export const projects = [
@@ -64,11 +64,11 @@ export const experience = {
   place: "Bangalore",
   when: "September 2024 to May 2026",
   summary:
-    "Two years across the Dealsdray commerce app and internal panels, the Prexo warehouse operation, Rekrafted refurbished-mobile sales, and the notification console for Dealsdray.",
+    "Two years working on the Dealsdray commerce app and internal panels, the Prexo warehouse operation, Rekrafted refurbished-mobile sales, and the notification console for Dealsdray.",
   rows: [
     {
       label: "Scope",
-      text: "Worked across the Dealsdray customer app and internal panels, Prexo warehouse processing, Rekrafted refurbished-mobile sales, and the notification console for the Dealsdray app.",
+      text: "Worked on the Dealsdray customer app and internal panels, Prexo warehouse processing, Rekrafted refurbished-mobile sales, and the notification console for the Dealsdray app.",
     },
     {
       label: "Ownership",
