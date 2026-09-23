@@ -63,8 +63,6 @@ export const experience = {
   company: "C S Tech Infosolutions",
   place: "Bangalore",
   when: "September 2024 to May 2026",
-  summary:
-    "Worked on Dealsdray, Prexo, Rekrafted, and the notification console for the Dealsdray app.",
   rows: [
     {
       label: "Ownership",

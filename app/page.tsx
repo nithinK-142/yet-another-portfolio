@@ -121,7 +121,14 @@ export default function Page() {
                 <p className="small">
                   {experience.place}, {experience.when}
                 </p>
-                <p className="summary">{experience.summary}</p>
+                <nav className="small" aria-label="Selected work">
+                  {projects.map((p, index) => (
+                    <span key={p.id}>
+                      {index > 0 ? " · " : ""}
+                      <a href={`#${p.id}`}>{p.name}</a>
+                    </span>
+                  ))}
+                </nav>
               </div>
               <dl className="story">
                 {experience.rows.map((r) => (
