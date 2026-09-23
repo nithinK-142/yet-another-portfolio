@@ -7,7 +7,7 @@ export const site = {
   resume: "/nithin-public-resume.pdf",
   title: "Nithin K, backend developer (Node.js, Go)",
   description:
-    "Backend developer in Bangalore. Two years taking client systems from unfinished to production across e-commerce, warehouse operations and messaging. Available now, open to relocating.",
+    "Backend developer in Bangalore. Two years working across commerce, warehouse processing, refurbished mobile sales and notifications for the Dealsdray app. Available now, open to relocating.",
 };
 
 export const projects = [

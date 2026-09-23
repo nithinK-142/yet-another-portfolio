@@ -64,10 +64,9 @@ export default function Page() {
             <div className="hero-grid">
               <div>
                 <h1>
-                  I take backend systems from <span className="u">unfinished to production</span>, and keep them
-                  running.
+                  I build the backend systems behind <span className="u">real business workflows</span>.
                 </h1>
-                <p>Two years of client work across e-commerce, warehouse operations and messaging.</p>
+                <p>Payments, shipping, warehouse jobs, data migrations, notifications, deployments, and the failures between them.</p>
                 <div className="acts">
                   <a className="button" href={`mailto:${site.email}`}>
                     <Icon name="mail" size={18} />
@@ -95,7 +94,7 @@ export default function Page() {
                 </li>
                 <li className="meta-row">
                   <span>Experience</span>
-                  <span className="meta-value">2 years in production</span>
+                  <span className="meta-value">2 years</span>
                 </li>
                 <li className="meta-row">
                   <span>Focus</span>
