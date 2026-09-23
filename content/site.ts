@@ -15,35 +15,46 @@ export const projects = [
     id: "dealsdray",
     name: "Dealsdray",
     stack: "React, Express, MongoDB, Flutter",
-    context: "A B2B e-commerce platform that was still unfinished.",
-    did: "Built and shipped major parts of it. Integrated Razorpay, PayTM, Zoop and Shiprocket for payments and shipping, and migrated 70K+ legacy users and their orders.",
+    context:
+      "Dealsdray is the commerce side of the business: a mobile app for customers plus internal panels for team members, selling new and refurbished electronics and mobiles.",
+    did:
+      "Built and shipped major parts of the app and internal panels. Integrated Razorpay, PayTM, Zoop and Shiprocket, including webhooks for payment and shipment updates. Built the migration pipeline for 70K+ legacy users and orders, then separated API, cron, notification and payment workloads into independent services.",
     result:
-      "Live in production with 30K+ daily users and 2K+ orders a month. I later split it into four services (API, cron, notifications, payments) so each can be released and scaled on its own.",
+      "The platform serves 30K+ daily users and 2K+ monthly orders. The service split gave API, cron, notification and payment workloads separate release boundaries.",
   },
   {
     id: "notification-console",
     name: "Notification Console",
     stack: "React, Express, MongoDB, Go",
-    context: "Sending a large push notification campaign took about 15 minutes.",
-    did: "Designed and built a console that sends in priority order and in concurrent batches, and recovers if a run crashes partway.",
-    result: "Campaign runs now finish in under a minute. It has handled 80K+ device tokens and 10K+ campaigns.",
+    context:
+      "Notification Console is the internal notification tool for the Dealsdray mobile app. A large campaign could take about 15 minutes to finish, so delivery had to process large token sets without making every campaign wait on serial batch work.",
+    did:
+      "Built the console around priority-ordered campaigns, concurrent batch delivery and crash recovery. The worker processes device-token batches and keeps enough state to resume after a process failure.",
+    result:
+      "Campaign runs now finish in under a minute. The system has handled 80K+ device tokens and 10K+ campaigns.",
   },
   {
     id: "rekrafted",
     name: "Rekrafted",
     stack: "Next.js, Express, MongoDB",
-    context: "A marketplace for refurbished devices.",
-    did: "Built product grading, so listings and pricing vary by a device's condition grade. Moved the 10 to 15GB media library off the API server onto ImageKit.",
-    result: "70% of inventory now sits in graded listings, and orders are up 15%. The API server no longer stores the media.",
+    context:
+      "Rekrafted is the refurbished-only counterpart to Dealsdray. It follows the same commerce model but sells only refurbished mobiles. The API server also held a 10–15GB media library.",
+    did:
+      "Built product grading so listings and pricing could vary by device condition. Wrote a migration utility that moves existing product and color images to ImageKit, updates their URLs and thumbnails, and skips files already migrated.",
+    result:
+      "Grade-specific listings cover 70% of inventory and orders increased 15%. The 10–15GB media library was moved off the API server.",
     link: { href: "https://rekrafted.in/", label: "rekrafted.in" },
   },
   {
     id: "prexo",
     name: "Prexo",
     stack: "React, Express, MongoDB",
-    context: "A warehouse processing system whose scheduled jobs on Windows Server failed on 50% of runs.",
-    did: "Moved the jobs into a service managed by NSSM. Built a recovery utility that puts unsellable units back in as fresh imports.",
-    result: "Job failures dropped to 0%, and 30% more inventory is recovered than before.",
+    context:
+      "Prexo covers the warehouse side of the process, from procuring incoming electronics through processing them and preparing them for sale on Dealsdray. Its scheduled Windows Server jobs were failing on roughly 50% of runs.",
+    did:
+      "Moved the cron runner into an NSSM-managed Windows service. Also built a recovery utility that brings unsellable units back into the import process as fresh inventory.",
+    result:
+      "Scheduled job failures dropped from 50% of runs to 0%, and inventory recovery increased by 30%.",
   },
 ];
 
