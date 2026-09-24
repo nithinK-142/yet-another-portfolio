@@ -741,6 +741,10 @@ footer {
 }
 
 @media (min-width: 40rem) {
+  .experience-story {
+    min-width: 0;
+  }
+
   .experience-story > div {
     grid-template-columns: 1fr;
   }
