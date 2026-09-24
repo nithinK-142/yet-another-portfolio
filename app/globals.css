@@ -239,6 +239,15 @@ footer {
   display: flex;
   align-items: baseline;
   gap: 1.6rem;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+
+.top nav::-webkit-scrollbar {
+  display: none;
 }
 
 .kbd {
