@@ -1166,11 +1166,6 @@ footer.site-footer .blk {
   line-height: 1.45;
 }
 
-@media (min-width: 48rem) {
-  .stack-intro p {
-    white-space: nowrap;
-  }
-}
 
 .stack-grid {
   display: grid;
