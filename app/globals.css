@@ -1077,14 +1077,12 @@ footer.site-footer .blk {
 }
 
 /* ---------- Work + stack: tighter visual structure without adding UI noise ---------- */
-#stack > h2,
 #work > h2 {
   display: flex;
   align-items: center;
   gap: 0.9rem;
 }
 
-#stack > h2::after,
 #work > h2::after {
   content: "";
   flex: 1;
