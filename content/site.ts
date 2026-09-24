@@ -1,7 +1,6 @@
 export const site = {
   name: "Nithin K",
   url: "https://nithin.me",
-  domain: "nithin.me",
   email: "142nithin@gmail.com",
   github: "https://github.com/nithinK-142",
   linkedin: "https://www.linkedin.com/in/nithin142/",
