@@ -71,19 +71,15 @@ export const experience = {
   when: "September 2024 to May 2026",
   rows: [
     {
-      label: "",
       text: "Build and maintain full-stack applications, from UI changes through backend logic, database work, and server-side code.",
     },
     {
-      label: "",
       text: "Extend existing codebases, trace bugs through dependent parts, and fix issues without breaking related functionality.",
     },
     {
-      label: "",
       text: "Implement application requirements involving external services, data changes, background work, and scheduled tasks.",
     },
     {
-      label: "",
       text: "Take changes through release and handle live issues through logs, server checks, debugging, outages, and data fixes.",
     },
   ],
