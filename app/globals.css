@@ -989,6 +989,11 @@ footer.site-footer .blk {
   outline: 0;
 }
 
+.pal input:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: -2px;
+}
+
 .pal-list {
   padding: 0.3rem;
   max-height: 20rem;
