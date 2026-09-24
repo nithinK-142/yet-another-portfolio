@@ -20,6 +20,7 @@
   --inv-ink: #ffffff;
   --grid: rgba(12, 12, 12, 0.075);
   --accent: #e9a54a;
+  --accent-text: #8a5a00;
   --accent-soft: rgba(233, 165, 74, 0.11);
   --accent-rgb: 233, 165, 74;
   --bar: 4rem;
@@ -37,6 +38,7 @@
     --inv-ink: #0c0c0c;
     --grid: rgba(243, 243, 241, 0.08);
     --accent: #e9a54a;
+    --accent-text: #e9a54a;
     --accent-soft: rgba(233, 165, 74, 0.11);
     --accent-rgb: 233, 165, 74;
   }
@@ -52,6 +54,7 @@
   --inv-ink: #0c0c0c;
   --grid: rgba(243, 243, 241, 0.08);
   --accent: #e9a54a;
+  --accent-text: #e9a54a;
   --accent-soft: rgba(233, 165, 74, 0.11);
   --accent-rgb: 233, 165, 74;
   color-scheme: dark;
@@ -263,8 +266,8 @@ footer {
 }
 
 .kbd:hover {
-  color: var(--accent);
-  border-color: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent-text);
 }
 
 .motion-toggle {
@@ -370,7 +373,7 @@ footer {
 }
 
 .top nav > a:hover {
-  color: var(--accent);
+  color: var(--accent-text);
   text-decoration: underline;
   text-underline-offset: 0.25em;
   text-decoration-thickness: 2px;
@@ -505,7 +508,7 @@ footer {
   column-gap: 0.8rem;
   align-items: center;
   min-height: 3.5rem;
-  color: var(--accent);
+  color: var(--accent-text);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -647,7 +650,7 @@ footer {
 
 .link:hover,
 .plain-link:hover {
-  color: var(--accent);
+  color: var(--accent-text);
   text-decoration-thickness: 2px;
   text-decoration-color: var(--accent);
 }
@@ -702,7 +705,7 @@ footer {
 }
 
 .stack a:hover {
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 .story {
@@ -873,11 +876,11 @@ footer {
 
 .copy-btn.is-done {
   color: var(--ink);
-  border-color: var(--accent);
+  border-color: var(--accent-text);
 }
 
 .copy-btn.is-done .icon {
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 .icon-btn {
@@ -1110,8 +1113,8 @@ footer.site-footer .blk {
   width: 1.7rem;
   margin: 0.25rem 0 0;
   padding-top: 0.18rem;
-  border-top: 1px solid var(--accent);
-  color: var(--accent);
+  border-top: 1px solid var(--accent-text);
+  color: var(--accent-text);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.09em;
@@ -1220,7 +1223,7 @@ footer.site-footer .blk {
 
 .stack-index {
   flex: none;
-  color: var(--accent);
+  color: var(--accent-text);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -1262,7 +1265,7 @@ footer.site-footer .blk {
 }
 
 .stack-item:hover {
-  border-color: var(--accent);
+  border-color: var(--accent-text);
 }
 
 @media (max-width: 47.999rem) {
