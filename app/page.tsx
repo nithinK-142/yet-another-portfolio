@@ -84,19 +84,23 @@ export default function Page() {
               <ul className="hero-meta">
                 <li className="status">
                   <span className="dot" aria-hidden="true" />
-                  Available now
+                  <span className="status-label">Available now</span>
                 </li>
                 <li className="meta-row">
-                  <span>Based in</span>
-                  <span className="meta-value">Bangalore · open to relocating</span>
+                  <span>Open to</span>
+                  <span className="meta-value">Backend · Full Stack</span>
                 </li>
                 <li className="meta-row">
                   <span>Experience</span>
                   <span className="meta-value">2 years</span>
                 </li>
                 <li className="meta-row">
-                  <span>Focus</span>
-                  <span className="meta-value">Backend systems</span>
+                  <span>Based in</span>
+                  <span className="meta-value">Bengaluru</span>
+                </li>
+                <li className="meta-row">
+                  <span>Primary stack</span>
+                  <span className="meta-value">Node.js · Go · React</span>
                 </li>
                 <li className="meta-row">
                   <span>Local time</span>
@@ -139,13 +143,6 @@ export default function Page() {
                 <div>
                   <h2 id="stack-h">Stack</h2>
                   <p>Most of my work is backend: APIs, jobs, data stores, integrations and deployment tooling.</p>
-                </div>
-                <div className="stack-flow" aria-label="How the stack fits together">
-                  <span>Build</span>
-                  <span aria-hidden="true">→</span>
-                  <span>Ship</span>
-                  <span aria-hidden="true">→</span>
-                  <span>Run</span>
                 </div>
               </div>
 
