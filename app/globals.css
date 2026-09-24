@@ -740,6 +740,12 @@ footer {
   max-width: 44rem;
 }
 
+@media (min-width: 40rem) {
+  .experience-story > div {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- Experience + stack, contact: two balanced columns ---------- */
 .role {
   margin: 0;

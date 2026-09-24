@@ -128,10 +128,10 @@ export default function Page() {
                   {experience.place}, {experience.when}
                 </p>
               </div>
-              <dl className="story">
+              <dl className="story experience-story">
                 {experience.rows.map((r) => (
                   <div key={r.label}>
-                    <dt className="sr-only">Responsibility</dt>
+                    <dt className="sr-only">{r.label}</dt>
                     <dd>{r.text}</dd>
                   </div>
                 ))}
