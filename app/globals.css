@@ -728,27 +728,6 @@ footer {
   max-width: 44rem;
 }
 
-.facts {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  max-width: 52rem;
-}
-
-.facts li {
-  padding-block: clamp(0.3rem, calc(var(--avail) * 0.01), 0.65rem);
-  border-top: 1px solid var(--rule);
-  font-weight: 500;
-  letter-spacing: -0.015em;
-  font-size: clamp(1rem, min(2vw, calc(var(--avail) * 0.026)), 1.55rem);
-  line-height: 1.25;
-}
-
-.facts li:first-child {
-  border-top: 0;
-  padding-top: 0;
-}
-
 /* ---------- Experience + stack, contact: two balanced columns ---------- */
 .role {
   margin: 0;
@@ -756,12 +735,6 @@ footer {
   font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1.1;
-}
-
-.summary {
-  margin: 1.2rem 0 0;
-  color: var(--mute);
-  max-width: 24rem;
 }
 
 .sub {
@@ -1090,7 +1063,6 @@ footer.site-footer .blk {
 
   .top nav,
   .skip-link,
-  .bg-mesh,
   .pal {
     display: none;
   }
@@ -1118,25 +1090,6 @@ footer.site-footer .blk {
   flex: 1;
   height: 1px;
   background: var(--rule);
-}
-
-.stack-list > div {
-  grid-template-columns: 2.1rem 8rem minmax(0, 1fr);
-  align-items: baseline;
-  gap: 0.3rem 1rem;
-  padding-block: 0.78rem;
-}
-
-.stack-list .tl-index {
-  color: var(--accent);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.09em;
-  font-variant-numeric: tabular-nums;
-}
-
-.stack-list dt {
-  font-weight: 600;
 }
 
 .project-intro {
@@ -1177,14 +1130,6 @@ footer.site-footer .blk {
 }
 
 @media (max-width: 39.999rem) {
-  .stack-list > div {
-    grid-template-columns: 2.1rem 1fr;
-  }
-
-  .stack-list dd {
-    grid-column: 2;
-  }
-
   .project-intro {
     gap: 0.75rem;
   }
@@ -1227,25 +1172,6 @@ footer.site-footer .blk {
   .stack-intro p {
     white-space: nowrap;
   }
-}
-
-.stack-flow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  flex: none;
-  padding-bottom: 0.15rem;
-  color: var(--mute);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.stack-flow span:nth-child(2n) {
-  color: var(--accent);
-  font-size: 0.95rem;
 }
 
 .stack-grid {
@@ -1340,10 +1266,6 @@ footer.site-footer .blk {
 @media (max-width: 47.999rem) {
   .stack-intro {
     display: block;
-  }
-
-  .stack-flow {
-    margin-top: 0.9rem;
   }
 
   .stack-grid {
