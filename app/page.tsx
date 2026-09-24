@@ -21,8 +21,6 @@ const paletteItems: PaletteItem[] = [
   { label: "Contact", hint: "section", href: "#contact", icon: "chevron" },
 ];
 
-const updated = new Date().toLocaleDateString("en-US", { month: "short", year: "numeric" });
-
 const stackNotes: Record<string, string> = {
   Languages: "Application code",
   Frontend: "Interfaces + web apps",
@@ -64,9 +62,9 @@ export default function Page() {
             <div className="hero-grid">
               <div>
                 <h1>
-                  I build the backend systems behind <span className="u">real business workflows</span>.
+                  I build the systems behind <span className="u">real business workflows</span>.
                 </h1>
-                <p>Payments, shipping, warehouse jobs, data migrations, notifications, deployments, and the failures between them.</p>
+                <p>Payments, shipping, warehouse operations, data migrations, notifications, and deployments — with end-to-end ownership.</p>
                 <div className="acts">
                   <a className="button" href={`mailto:${site.email}`}>
                     <Icon name="mail" size={18} />
@@ -121,14 +119,6 @@ export default function Page() {
                 <p className="small">
                   {experience.place}, {experience.when}
                 </p>
-                <nav className="small" aria-label="Selected work">
-                  {projects.map((p, index) => (
-                    <span key={p.id}>
-                      {index > 0 ? " · " : ""}
-                      <a href={`#${p.id}`}>{p.name}</a>
-                    </span>
-                  ))}
-                </nav>
               </div>
               <dl className="story">
                 {experience.rows.map((r) => (
@@ -226,16 +216,19 @@ export default function Page() {
             </div>
           </div>
         </section>
+      </main>
 
-        <section className="sec" aria-labelledby="contact-h">
-          <div className="wrap">
-            <div className="blk pair" id="contact">
-              <div>
-                <h2 id="contact-h">Contact</h2>
-                <p className="ask">Have a backend feature, integration, or reliability problem to discuss? Email me.</p>
-                <p className="ask-sub">Hiring for backend or full-stack work? Same address.</p>
-                <CopyEmail email={site.email} />
-              </div>
+      <footer className="site-footer" aria-labelledby="contact-h">
+        <div className="wrap">
+          <div className="blk pair" id="contact">
+            <div>
+              <p className="ask">Need help building, integrating, or fixing something? Email me.</p>
+              <p className="ask-sub">Hiring for backend or full-stack work? Same address.</p>
+              <CopyEmail email={site.email} />
+
+            </div>
+
+            <div className="footer-side">
               <dl className="tl">
                 <div>
                   <dt className="ic">
@@ -271,18 +264,12 @@ export default function Page() {
                   </dd>
                 </div>
               </dl>
-            </div>
-          </div>
-        </section>
-      </main>
 
-      <footer className="site-footer">
-        <div className="wrap">
-          <span>Less talk. More git push.</span>
-          <div className="footer-right">
-            <ThemeToggle />
-            <MotionToggle />
-            <span>Updated {updated}</span>
+              <div className="contact-controls">
+                <ThemeToggle />
+                <MotionToggle />
+              </div>
+            </div>
           </div>
         </div>
       </footer>
