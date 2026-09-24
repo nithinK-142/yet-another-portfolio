@@ -1,6 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import { controls } from "@/content/site";
 
 const STORAGE_KEY = "nithin-motion-enabled";
 const EVENT_NAME = "motion-preference-change";
@@ -38,9 +39,9 @@ export function MotionToggle() {
       type="button"
       className="motion-toggle"
       aria-pressed={enabled}
-      aria-label={enabled ? "Animations enabled" : "Animations reduced"}
-      title={enabled ? "Animations on. Click to reduce motion." : "Animations reduced. Click to enable motion."}
-      data-tooltip={enabled ? "Motion on · click to reduce" : "Motion reduced · click to enable"}
+      aria-label={enabled ? controls.motion.enabledAria : controls.motion.reducedAria}
+      title={enabled ? controls.motion.enabledTitle : controls.motion.reducedTitle}
+      data-tooltip={enabled ? controls.motion.enabledTooltip : controls.motion.reducedTooltip}
       onClick={toggle}
     >
       <span className={enabled ? "motion-toggle__switch is-on" : "motion-toggle__switch"} aria-hidden="true">

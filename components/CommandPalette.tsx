@@ -3,6 +3,7 @@
 import { useEffect, useId, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { Icon, type IconName } from "@/components/Icon";
 import { copyText } from "@/lib/copy";
+import { commandPalette } from "@/content/site";
 
 export type PaletteItem = {
   label: string;
@@ -52,7 +53,11 @@ export function CommandPalette({ items }: { items: PaletteItem[] }) {
     if (item.copy) {
       const ok = await copyText(item.copy);
       close();
-      setToast(ok ? `Copied: ${item.copy}` : `Couldn't copy. Email: ${item.copy}`);
+      setToast(
+        ok
+          ? `${commandPalette.copied} ${item.copy}`
+          : `${commandPalette.copyFailed} ${item.copy}`,
+      );
       return;
     }
     close();
@@ -104,14 +109,14 @@ export function CommandPalette({ items }: { items: PaletteItem[] }) {
 
   return (
     <>
-      <button type="button" className="kbd" onClick={open} aria-label="Open command palette">
-        {mac ? "\u2318 K" : "Ctrl K"}
+      <button type="button" className="kbd" onClick={open} aria-label={commandPalette.ariaLabel}>
+        {mac ? commandPalette.shortcut.mac : commandPalette.shortcut.default}
       </button>
 
       <dialog
         ref={dialogRef}
         className="pal"
-        aria-label="Command palette"
+        aria-label={commandPalette.dialogLabel}
         onClick={(e) => {
           if (e.target === dialogRef.current) close();
         }}
@@ -123,8 +128,8 @@ export function CommandPalette({ items }: { items: PaletteItem[] }) {
           aria-expanded={shown.length > 0}
           aria-controls={shown.length > 0 ? listId : undefined}
           aria-activedescendant={shown[active] ? `${listId}-${active}` : undefined}
-          aria-label="Search links and sections"
-          placeholder="Type to search"
+          aria-label={commandPalette.searchLabel}
+          placeholder={commandPalette.placeholder}
           autoComplete="off"
           value={query}
           onChange={(e) => {
@@ -135,7 +140,7 @@ export function CommandPalette({ items }: { items: PaletteItem[] }) {
           onKeyDown={onInputKey}
         />
         {shown.length > 0 ? (
-          <div ref={listRef} id={listId} role="listbox" aria-label="Results" className="pal-list">
+          <div ref={listRef} id={listId} role="listbox" aria-label={commandPalette.resultsLabel} className="pal-list">
             {shown.map((item, i) => {
               const common = {
                 id: `${listId}-${i}`,
@@ -172,10 +177,10 @@ export function CommandPalette({ items }: { items: PaletteItem[] }) {
             })}
           </div>
         ) : (
-          <p className="pal-empty">No matches</p>
+          <p className="pal-empty">{commandPalette.noMatches}</p>
         )}
         <p className="pal-status" aria-live="polite">
-          {status || "Enter to open, Esc to close"}
+          {status || commandPalette.status}
         </p>
       </dialog>
 

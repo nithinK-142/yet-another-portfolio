@@ -1,6 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import { accessibility } from "@/content/site";
 
 const formatter = new Intl.DateTimeFormat("en-US", {
   hour: "numeric",
@@ -22,7 +23,7 @@ export function LocalTime() {
   );
 
   return (
-    <span className="time" aria-label={time ? `Local time in Bangalore: ${time}` : undefined}>
+    <span className="time" aria-label={time ? `${accessibility.localTime}: ${time}` : undefined}>
       {time || "\u00a0"}
     </span>
   );

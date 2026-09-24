@@ -1,12 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { navigation } from "@/content/site";
 
-const SECTIONS = [
-  { id: "experience", label: "Experience", blocks: ["experience", "stack"] },
-  { id: "work", label: "Work", blocks: ["work"] },
-  { id: "contact", label: "Contact", blocks: ["contact"] },
-];
+const SECTIONS = navigation.sections;
 
 /** Primary links. The link for the section you are reading gets aria-current and an accent. */
 export function NavLinks() {

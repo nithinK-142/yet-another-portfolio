@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Icon } from "@/components/Icon";
 import { copyText } from "@/lib/copy";
+import { accessibility } from "@/content/site";
 
 /** The email address as a mailto link, with a one-click copy button that confirms what happened. */
 export function CopyEmail({ email }: { email: string }) {
@@ -27,14 +28,14 @@ export function CopyEmail({ email }: { email: string }) {
         type="button"
         className={state === "copied" ? "copy-btn is-done" : "copy-btn"}
         onClick={copy}
-        aria-label="Copy email address"
-        title="Copy email address"
+        aria-label={accessibility.copyEmail}
+        title={accessibility.copyEmail}
       >
         <Icon name={state === "copied" ? "check" : "copy"} size={16} />
-        <span>{state === "copied" ? "Copied" : state === "failed" ? "Copy failed" : "Copy"}</span>
+        <span>{state === "copied" ? accessibility.copyStates.copied : state === "failed" ? accessibility.copyStates.failed : accessibility.copyStates.idle}</span>
       </button>
       <span className="sr-only" role="status" aria-live="polite">
-        {state === "copied" ? "Email address copied" : state === "failed" ? "Could not copy" : ""}
+        {state === "copied" ? accessibility.emailCopied : state === "failed" ? accessibility.couldNotCopy : ""}
       </span>
     </div>
   );

@@ -2,6 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 import { Icon } from "@/components/Icon";
+import { controls } from "@/content/site";
 
 const STORAGE_KEY = "nithin-theme";
 const EVENT_NAME = "theme-preference-change";
@@ -37,10 +38,10 @@ export function ThemeToggle() {
     window.dispatchEvent(new Event(EVENT_NAME));
   }
 
-  const label = theme === "dark" ? "Switch to light theme" : "Switch to dark theme";
+  const label = theme === "dark" ? controls.theme.light : controls.theme.dark;
 
   return (
-    <button type="button" className="icon-btn" onClick={toggle} aria-label={theme ? label : "Switch theme"} title={theme ? label : "Switch theme"}>
+    <button type="button" className="icon-btn" onClick={toggle} aria-label={theme ? label : controls.theme.generic} title={theme ? label : controls.theme.generic}>
       {theme === "dark" ? <Icon name="sun" size={16} /> : theme === "light" ? <Icon name="moon" size={16} /> : null}
     </button>
   );

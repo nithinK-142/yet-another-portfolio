@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
-import { site } from "@/content/site";
+import { seo, site } from "@/content/site";
 import "./globals.css";
 
 const schibsted = localFont({
@@ -39,11 +39,15 @@ const personJsonLd = {
   "@type": "Person",
   name: site.name,
   url: site.url,
-  jobTitle: "Backend-leaning full-stack developer",
+  jobTitle: seo.jsonLd.jobTitle,
   email: `mailto:${site.email}`,
-  address: { "@type": "PostalAddress", addressLocality: "Bangalore", addressCountry: "IN" },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: seo.jsonLd.addressLocality,
+    addressCountry: seo.jsonLd.addressCountry,
+  },
   sameAs: [site.github, site.linkedin],
-  knowsAbout: ["Node.js", "Go", "MongoDB", "PostgreSQL", "Microservices", "API integrations"],
+  knowsAbout: seo.jsonLd.knowsAbout,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

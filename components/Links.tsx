@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Icon, type IconName } from "@/components/Icon";
+import { accessibility } from "@/content/site";
 
 /** External link that opens in a new tab and says so to screen readers. */
 export function ExternalLink({
@@ -22,7 +23,7 @@ export function ExternalLink({
       {icon && <Icon name={icon} size={17} />}
       <span>{children}</span>
       {trailing && <Icon name={trailing} size={15} />}
-      <span className="sr-only"> (opens in a new tab)</span>
+      <span className="sr-only">{accessibility.externalLinkSuffix}</span>
     </a>
   );
 }

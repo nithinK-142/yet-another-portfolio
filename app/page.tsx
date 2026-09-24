@@ -7,29 +7,33 @@ import { MotionToggle } from "@/components/MotionToggle";
 import { NavLinks } from "@/components/NavLinks";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ExternalLink } from "@/components/Links";
-import { experience, projects, site, tools } from "@/content/site";
+import {
+  accessibility,
+  commandPalette,
+  contact,
+  experience,
+  footer,
+  hero,
+  navigation,
+  projectLabels,
+  projects,
+  sections,
+  site,
+  stack,
+  tools,
+} from "@/content/site";
 
 const paletteItems: PaletteItem[] = [
-  { label: "Email me", hint: site.email, href: `mailto:${site.email}`, icon: "mail" },
-  { label: "Copy email", hint: "to clipboard", copy: site.email, icon: "copy" },
-  { label: "Resume", hint: "PDF", href: site.resume, external: true, icon: "file" },
-  { label: "GitHub", hint: "nithinK-142", href: site.github, external: true, icon: "github" },
-  { label: "LinkedIn", hint: "nithin142", href: site.linkedin, external: true, icon: "linkedin" },
-  { label: "Experience", hint: "section", href: "#experience", icon: "chevron" },
-  { label: "Stack", hint: "section", href: "#stack", icon: "chevron" },
-  ...projects.map((p) => ({ label: p.name, hint: "project", href: `#${p.id}`, icon: "chevron" as const })),
-  { label: "Contact", hint: "section", href: "#contact", icon: "chevron" },
+  { label: commandPalette.labels.email, hint: site.email, href: `mailto:${site.email}`, icon: "mail" },
+  { label: commandPalette.labels.copyEmail, hint: commandPalette.hints.copyEmail, copy: site.email, icon: "copy" },
+  { label: commandPalette.labels.resume, hint: commandPalette.hints.resume, href: site.resume, external: true, icon: "file" },
+  { label: commandPalette.labels.github, hint: commandPalette.hints.github, href: site.github, external: true, icon: "github" },
+  { label: commandPalette.labels.linkedin, hint: commandPalette.hints.linkedin, href: site.linkedin, external: true, icon: "linkedin" },
+  { label: commandPalette.labels.experience, hint: commandPalette.hints.section, href: "#experience", icon: "chevron" },
+  { label: commandPalette.labels.stack, hint: commandPalette.hints.section, href: "#stack", icon: "chevron" },
+  ...projects.map((p) => ({ label: p.name, hint: commandPalette.hints.project, href: `#${p.id}`, icon: "chevron" as const })),
+  { label: commandPalette.labels.contact, hint: commandPalette.hints.section, href: "#contact", icon: "chevron" },
 ];
-
-const stackNotes: Record<string, string> = {
-  Languages: "Application code",
-  Frontend: "Interfaces + web apps",
-  Backend: "APIs + async services",
-  Data: "Persistence + caching",
-  Infrastructure: "Deployment + process management",
-  Integrations: "Payments + logistics + messaging",
-  Observability: "Metrics + tracing + error tracking",
-};
 
 export default function Page() {
   return (
@@ -37,18 +41,18 @@ export default function Page() {
       <CursorLight />
 
       <a href="#main" className="skip-link">
-        Skip to content
+        {accessibility.skipToContent}
       </a>
 
       {/* Sticky bar: stays visible on every screen. The name is not shown on the page; the mark stands in for it. */}
       <div className="topbar">
         <div className="wrap top">
-          <a href="#top" className="mark" aria-label="Back to top">
+          <a href="#top" className="mark" aria-label={accessibility.backToTop}>
             <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true">
               <path d="M9 24V8l14 16V8" fill="none" stroke="currentColor" strokeWidth="3" strokeLinejoin="miter" />
             </svg>
           </a>
-          <nav aria-label="Primary">
+          <nav aria-label={navigation.ariaLabel}>
             <NavLinks />
             <CommandPalette items={paletteItems} />
           </nav>
@@ -62,48 +66,48 @@ export default function Page() {
             <div className="hero-grid">
               <div>
                 <h1>
-                  I build the systems behind <span className="u">real business workflows</span>.
+                  {hero.heading} <span className="u">{hero.headingHighlight}</span>.
                 </h1>
-                <p>Payments, shipping, warehouse operations, data migrations, notifications, and deployments — with end-to-end ownership.</p>
+                <p>{hero.description}</p>
                 <div className="acts">
                   <a className="button" href={`mailto:${site.email}`}>
                     <Icon name="mail" size={18} />
-                    Email me
+                    {site.links.email.label}
                   </a>
                   <ExternalLink href={site.resume} icon="file">
-                    Resume
+                    {site.links.resume.label}
                   </ExternalLink>
                   <ExternalLink href={site.github} icon="github">
-                    GitHub
+                    {site.links.github.label}
                   </ExternalLink>
                   <ExternalLink href={site.linkedin} icon="linkedin">
-                    LinkedIn
+                    {site.links.linkedin.label}
                   </ExternalLink>
                 </div>
               </div>
               <ul className="hero-meta">
                 <li className="status">
                   <span className="dot" aria-hidden="true" />
-                  <span className="status-label">Available now</span>
+                  <span className="status-label">{hero.status}</span>
                 </li>
                 <li className="meta-row">
-                  <span>Open to</span>
-                  <span className="meta-value">Backend · Full Stack</span>
+                  <span>{hero.meta.openTo.label}</span>
+                  <span className="meta-value">{hero.meta.openTo.value}</span>
                 </li>
                 <li className="meta-row">
-                  <span>Experience</span>
-                  <span className="meta-value">2 years</span>
+                  <span>{hero.meta.experience.label}</span>
+                  <span className="meta-value">{hero.meta.experience.value}</span>
                 </li>
                 <li className="meta-row">
-                  <span>Based in</span>
-                  <span className="meta-value">Bengaluru</span>
+                  <span>{hero.meta.location.label}</span>
+                  <span className="meta-value">{hero.meta.location.value}</span>
                 </li>
                 <li className="meta-row">
-                  <span>Primary stack</span>
-                  <span className="meta-value">Node.js · Go · React</span>
+                  <span>{hero.meta.primaryStack.label}</span>
+                  <span className="meta-value">{hero.meta.primaryStack.value}</span>
                 </li>
                 <li className="meta-row">
-                  <span>Local time</span>
+                  <span>{hero.meta.localTime}</span>
                   <LocalTime />
                 </li>
               </ul>
@@ -117,7 +121,7 @@ export default function Page() {
           <div className="wrap">
             <div className="blk pair" id="experience">
               <div>
-                <h2 id="experience-h">Experience</h2>
+                <h2 id="experience-h">{sections.experience}</h2>
                 <h3 className="role">{experience.title}</h3>
                 <p className="sub">{experience.company}</p>
                 <p className="small">
@@ -141,8 +145,8 @@ export default function Page() {
             <div className="blk stack-block" id="stack">
               <div className="stack-intro">
                 <div>
-                  <h2 id="stack-h">Stack</h2>
-                  <p>Most of my work is backend: APIs, jobs, data stores, integrations and deployment tooling.</p>
+                  <h2 id="stack-h">{sections.stack}</h2>
+                  <p>{stack.description}</p>
                 </div>
               </div>
 
@@ -155,7 +159,7 @@ export default function Page() {
                       </span>
                       <div>
                         <h3>{t.group}</h3>
-                        <p className="stack-note">{stackNotes[t.group]}</p>
+                        <p className="stack-note">{stack.notes[t.group as keyof typeof stack.notes]}</p>
                       </div>
                     </div>
                     <div className="stack-items">
@@ -175,7 +179,7 @@ export default function Page() {
         <section className="sec" aria-labelledby="work-h">
           <div className="wrap">
             <div className="blk" id="work">
-              <h2 id="work-h">Selected Work</h2>
+              <h2 id="work-h">{sections.work}</h2>
               {projects.map((p, index) => (
                 <article className="proj pair" id={p.id} key={p.id}>
                   <div className="project-intro">
@@ -196,15 +200,15 @@ export default function Page() {
                   </div>
                   <dl className="story">
                     <div>
-                      <dt>Context</dt>
+                      <dt>{projectLabels.context}</dt>
                       <dd>{p.context}</dd>
                     </div>
                     <div>
-                      <dt>What I did</dt>
+                      <dt>{projectLabels.did}</dt>
                       <dd>{p.did}</dd>
                     </div>
                     <div>
-                      <dt>Result</dt>
+                      <dt>{projectLabels.result}</dt>
                       <dd>{p.result}</dd>
                     </div>
                   </dl>
@@ -219,11 +223,11 @@ export default function Page() {
         <div className="wrap">
           <div className="blk pair" id="contact">
             <div>
-              <h2 id="contact-h">Contact</h2>
+              <h2 id="contact-h">{contact.heading}</h2>
               <p className="ask">
-                Need help building, integrating, or fixing something? <span className="u">Email me.</span>
+                {contact.ask} <span className="u">{contact.askHighlight}</span>
               </p>
-              <p className="ask-sub">Hiring for backend or full-stack work? Same address.</p>
+              <p className="ask-sub">{contact.askSub}</p>
               <CopyEmail email={site.email} />
 
             </div>
@@ -233,33 +237,33 @@ export default function Page() {
                 <div>
                   <dt className="ic">
                     <Icon name="linkedin" size={17} />
-                    LinkedIn
+                    {site.links.linkedin.label}
                   </dt>
                   <dd>
                     <ExternalLink href={site.linkedin} trailing="external">
-                      linkedin.com/in/nithin142
+                      {site.links.linkedin.text}
                     </ExternalLink>
                   </dd>
                 </div>
                 <div>
                   <dt className="ic">
                     <Icon name="github" size={17} />
-                    GitHub
+                    {site.links.github.label}
                   </dt>
                   <dd>
                     <ExternalLink href={site.github} trailing="external">
-                      github.com/nithinK-142
+                      {site.links.github.text}
                     </ExternalLink>
                   </dd>
                 </div>
                 <div>
                   <dt className="ic">
                     <Icon name="file" size={17} />
-                    Resume
+                    {site.links.resume.label}
                   </dt>
                   <dd>
                     <ExternalLink href={site.resume} trailing="external">
-                      PDF
+                      {site.links.resume.text}
                     </ExternalLink>
                   </dd>
                 </div>
@@ -269,7 +273,7 @@ export default function Page() {
 
           <div className="footer-bottom">
             <p className="footer-note">
-              © {new Date().getFullYear()} {site.name}
+              {footer.copyright} {new Date().getFullYear()} {site.name}
             </p>
             <div className="contact-controls">
               <ThemeToggle />
