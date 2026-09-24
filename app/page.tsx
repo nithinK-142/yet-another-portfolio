@@ -219,7 +219,10 @@ export default function Page() {
         <div className="wrap">
           <div className="blk pair" id="contact">
             <div>
-              <p className="ask">Need help building, integrating, or fixing something? Email me.</p>
+              <h2 id="contact-h">Contact</h2>
+              <p className="ask">
+                Need help building, integrating, or fixing something? <span className="u">Email me.</span>
+              </p>
               <p className="ask-sub">Hiring for backend or full-stack work? Same address.</p>
               <CopyEmail email={site.email} />
 
@@ -261,11 +264,16 @@ export default function Page() {
                   </dd>
                 </div>
               </dl>
+            </div>
+          </div>
 
-              <div className="contact-controls">
-                <ThemeToggle />
-                <MotionToggle />
-              </div>
+          <div className="footer-bottom">
+            <p className="footer-note">
+              © {new Date().getFullYear()} {site.name}
+            </p>
+            <div className="contact-controls">
+              <ThemeToggle />
+              <MotionToggle />
             </div>
           </div>
         </div>
