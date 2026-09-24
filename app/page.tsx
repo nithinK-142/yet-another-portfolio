@@ -131,7 +131,7 @@ export default function Page() {
               <dl className="story">
                 {experience.rows.map((r) => (
                   <div key={r.label}>
-                    <dt>{r.label}</dt>
+                    <dt className="sr-only">Responsibility</dt>
                     <dd>{r.text}</dd>
                   </div>
                 ))}
