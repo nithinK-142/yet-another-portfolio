@@ -21,7 +21,6 @@ export function CommandPalette({ items }: { items: PaletteItem[] }) {
   const listRef = useRef<HTMLDivElement>(null);
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
-  const [status, setStatus] = useState("");
   const [toast, setToast] = useState("");
   const mac = useSyncExternalStore(
     () => () => {},
@@ -40,7 +39,6 @@ export function CommandPalette({ items }: { items: PaletteItem[] }) {
     if (!d || d.open) return;
     setQuery("");
     setActive(0);
-    setStatus("");
     d.showModal();
     inputRef.current?.focus();
   }
@@ -135,7 +133,6 @@ export function CommandPalette({ items }: { items: PaletteItem[] }) {
           onChange={(e) => {
             setQuery(e.target.value);
             setActive(0);
-            setStatus("");
           }}
           onKeyDown={onInputKey}
         />
@@ -180,7 +177,7 @@ export function CommandPalette({ items }: { items: PaletteItem[] }) {
           <p className="pal-empty">{commandPalette.noMatches}</p>
         )}
         <p className="pal-status" aria-live="polite">
-          {status || commandPalette.status}
+          {commandPalette.status}
         </p>
       </dialog>
 
